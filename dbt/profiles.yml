@@ -1,0 +1,17 @@
+clickhouse_edw:
+  target: dev
+  outputs:
+    dev:
+      type: clickhouse
+      host: clickhouse-edw
+      port: 8123
+      user: default
+      password: edw_password_123
+      database: edw
+      schema: edw
+      secure: false
+      verify: false
+      cluster_mode: false
+      custom_settings:
+        async_insert: 1
+        wait_for_async_insert: 1

@@ -1,0 +1,33 @@
+[2025-08-03T12:36:18.294+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cdc_processing_pipeline.check_kafka_connectivity scheduled__2025-08-03T12:31:09.522663+00:00 [queued]>
+[2025-08-03T12:36:18.298+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cdc_processing_pipeline.check_kafka_connectivity scheduled__2025-08-03T12:31:09.522663+00:00 [queued]>
+[2025-08-03T12:36:18.299+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 2
+[2025-08-03T12:36:18.305+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): check_kafka_connectivity> on 2025-08-03 12:31:09.522663+00:00
+[2025-08-03T12:36:18.308+0000] {standard_task_runner.py:57} INFO - Started process 174 to run task
+[2025-08-03T12:36:18.310+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'cdc_processing_pipeline', 'check_kafka_connectivity', 'scheduled__2025-08-03T12:31:09.522663+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/cdc_processing_dag.py', '--cfg-path', '/tmp/tmp2eccqu5t']
+[2025-08-03T12:36:18.313+0000] {standard_task_runner.py:85} INFO - Job 5: Subtask check_kafka_connectivity
+[2025-08-03T12:36:18.352+0000] {task_command.py:415} INFO - Running <TaskInstance: cdc_processing_pipeline.check_kafka_connectivity scheduled__2025-08-03T12:31:09.522663+00:00 [running]> on host c7fd243484f0
+[2025-08-03T12:36:18.395+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-engineering' AIRFLOW_CTX_DAG_ID='cdc_processing_pipeline' AIRFLOW_CTX_TASK_ID='check_kafka_connectivity' AIRFLOW_CTX_EXECUTION_DATE='2025-08-03T12:31:09.522663+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-03T12:31:09.522663+00:00'
+[2025-08-03T12:36:18.396+0000] {cdc_processing_dag.py:46} INFO - Checking Kafka connectivity and topic health
+[2025-08-03T12:36:18.397+0000] {conn.py:396} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+[2025-08-03T12:36:18.407+0000] {conn.py:618} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=bootstrap-0 host=kafka:29092 <checking_api_versions_recv> [IPv4 ('172.18.0.5', 29092)]>: Broker version identified as 2.6
+[2025-08-03T12:36:18.408+0000] {conn.py:457} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+[2025-08-03T12:36:18.408+0000] {consumer.py:120} WARNING - group_id is None: disabling auto-commit.
+[2025-08-03T12:36:18.416+0000] {conn.py:945} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.18.0.5', 29092)]>: Closing connection. 
+[2025-08-03T12:36:18.416+0000] {kafka_sensor.py:113} INFO - Topic edw_cdc.product_changes_log does not exist
+[2025-08-03T12:36:18.416+0000] {cdc_processing_dag.py:54} ERROR - CDC topic edw_cdc.product_changes_log does not exist
+[2025-08-03T12:36:18.416+0000] {cdc_processing_dag.py:65} ERROR - Error in Kafka connectivity check: Required topic edw_cdc.product_changes_log not found
+[2025-08-03T12:36:18.417+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/cdc_processing_dag.py", line 55, in check_kafka_connectivity
+    raise Exception(f"Required topic {topic_name} not found")
+Exception: Required topic edw_cdc.product_changes_log not found
+[2025-08-03T12:36:18.424+0000] {taskinstance.py:1398} INFO - Marking task as UP_FOR_RETRY. dag_id=cdc_processing_pipeline, task_id=check_kafka_connectivity, execution_date=20250803T123109, start_date=20250803T123618, end_date=20250803T123618
+[2025-08-03T12:36:18.429+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 5 for task check_kafka_connectivity (Required topic edw_cdc.product_changes_log not found; 174)
+[2025-08-03T12:36:18.450+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-08-03T12:36:18.464+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

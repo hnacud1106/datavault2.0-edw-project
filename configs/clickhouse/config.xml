@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<clickhouse>
+    <interserver_http_port>9010</interserver_http_port>
+    <max_concurrent_queries>200</max_concurrent_queries>
+</clickhouse>

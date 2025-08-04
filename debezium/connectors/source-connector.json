@@ -1,0 +1,20 @@
+{
+  "name": "clickhouse-source-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.jdbc.JdbcSourceConnector",
+    "connection.url": "jdbc:clickhouse://clickhouse-source:8123/staging",
+    "connection.username": "default",
+    "connection.password": "source_password_123",
+    "topic.prefix": "edw_cdc",
+    "table.include.list": "staging.product_changes_log",
+    "mode": "timestamp",
+    "timestamp.column.name": "change_timestamp",
+    "validate.non.null": false,
+    "poll.interval.ms": 5000,
+    "batch.max.rows": 1000,
+    "transforms": "route",
+    "transforms.route.type": "org.apache.kafka.connect.transforms.RegexRouter",
+    "transforms.route.regex": "([^.]+)\\.([^.]+)\\.([^.]+)",
+    "transforms.route.replacement": "$3"
+  }
+}

@@ -1,0 +1,71 @@
+[2025-08-03T12:35:57.745+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: initial_load_pipeline.process_new_deals manual__2025-08-03T12:35:54.820468+00:00 [queued]>
+[2025-08-03T12:35:57.750+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: initial_load_pipeline.process_new_deals manual__2025-08-03T12:35:54.820468+00:00 [queued]>
+[2025-08-03T12:35:57.750+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 3
+[2025-08-03T12:35:57.756+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): process_new_deals> on 2025-08-03 12:35:54.820468+00:00
+[2025-08-03T12:35:57.758+0000] {standard_task_runner.py:57} INFO - Started process 76 to run task
+[2025-08-03T12:35:57.760+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'initial_load_pipeline', 'process_new_deals', 'manual__2025-08-03T12:35:54.820468+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/initial_load_dag.py', '--cfg-path', '/tmp/tmpofde63bo']
+[2025-08-03T12:35:57.762+0000] {standard_task_runner.py:85} INFO - Job 3: Subtask process_new_deals
+[2025-08-03T12:35:57.789+0000] {task_command.py:415} INFO - Running <TaskInstance: initial_load_pipeline.process_new_deals manual__2025-08-03T12:35:54.820468+00:00 [running]> on host c7fd243484f0
+[2025-08-03T12:35:57.931+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-engineering' AIRFLOW_CTX_DAG_ID='initial_load_pipeline' AIRFLOW_CTX_TASK_ID='process_new_deals' AIRFLOW_CTX_EXECUTION_DATE='2025-08-03T12:35:54.820468+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-03T12:35:54.820468+00:00'
+[2025-08-03T12:35:57.937+0000] {initial_load_dag.py:75} INFO - Processing initial load for deals: ['Obagi', 'Hapas', 'Loreal']
+[2025-08-03T12:35:57.976+0000] {clickhouse_utils.py:50} INFO - Initialized connection pools with 4 connections each
+[2025-08-03T12:35:58.027+0000] {excel_filter_processor.py:31} INFO - Loaded filters for deal: Hapas
+[2025-08-03T12:35:58.031+0000] {excel_filter_processor.py:31} INFO - Loaded filters for deal: Obagi
+[2025-08-03T12:35:58.034+0000] {excel_filter_processor.py:31} INFO - Loaded filters for deal: Loreal
+[2025-08-03T12:35:58.034+0000] {excel_filter_processor.py:36} INFO - Loaded filters for 3 deals
+[2025-08-03T12:35:58.034+0000] {initial_load_dag.py:81} INFO - Processing initial load for deal: Obagi
+[2025-08-03T12:35:58.035+0000] {initial_load_dag.py:84} INFO - Filter conditions for Obagi: [{'column': 'brand', 'operator': 'CONTAINS', 'value': 'Obagi', 'logical_op': 'AND'}, {'column': 'product_name', 'operator': 'CONTAINS', 'value': 'serum', 'logical_op': 'OR'}, {'column': 'category', 'operator': 'IN', 'value': 'Skincare,Beauty', 'logical_op': 'AND'}]
+[2025-08-03T12:35:58.035+0000] {clickhouse_utils.py:74} INFO - Extracting data for deal: Obagi
+[2025-08-03T12:35:58.042+0000] {clickhouse_utils.py:103} INFO - Cloumns in result: ['product_base_id', 'product_name', 'product_description', 'category', 'brand', 'product_rating', 'product_image', 'shop_name', 'shop_link', 'revenue', 'month', 'price', 'quantity', 'deal_name', 'load_date', 'record_source']
+[2025-08-03T12:35:58.043+0000] {clickhouse_utils.py:106} INFO - Extracted 1 records for deal Obagi
+[2025-08-03T12:35:58.043+0000] {clickhouse_utils.py:107} INFO - Extracted records: [{'product_base_id': 2, 'product_name': 'Serum Obagi Vitamin C', 'product_description': 'Serum trắng da chuyên nghiệp từ Obagi', 'category': 'Beauty', 'brand': 'Obagi', 'product_rating': 4.800000190734863, 'product_image': 'obagi1.jpg', 'shop_name': 'Obagi Vietnam', 'shop_link': 'https://obagi.vn', 'revenue': Decimal('25000000.00'), 'month': '2025-01', 'price': Decimal('1200000.00'), 'quantity': 21, 'deal_name': 'Obagi', 'load_date': datetime.datetime(2025, 8, 3, 12, 35, 58), 'record_source': 'initial_load'}]
+[2025-08-03T12:35:58.043+0000] {initial_load_dag.py:91} INFO - Extracted 1 records for deal Obagi
+[2025-08-03T12:35:58.043+0000] {clickhouse_utils.py:151} INFO - Starting parallel insert of 1 records for deal Obagi
+[2025-08-03T12:35:58.043+0000] {clickhouse_utils.py:153} INFO - Split data into 1 batches
+[2025-08-03T12:35:58.043+0000] {clickhouse_utils.py:170} INFO - Processing batch 0 with 1 records
+[2025-08-03T12:35:58.056+0000] {clickhouse_utils.py:192} INFO - Prepared DataFrame for batch 0 with shape    product_base_id  ...   product_hash_diff
+0                2  ...  410920480257420179
+
+[1 rows x 20 columns]
+[2025-08-03T12:35:58.429+0000] {clickhouse_utils.py:202} INFO - Successfully inserted batch 0
+[2025-08-03T12:35:58.430+0000] {clickhouse_utils.py:162} INFO - Successfully inserted all data for deal Obagi
+[2025-08-03T12:35:58.430+0000] {initial_load_dag.py:97} INFO - Successfully loaded data for deal Obagi
+[2025-08-03T12:35:58.430+0000] {initial_load_dag.py:81} INFO - Processing initial load for deal: Hapas
+[2025-08-03T12:35:58.431+0000] {initial_load_dag.py:84} INFO - Filter conditions for Hapas: [{'column': 'brand', 'operator': 'CONTAINS', 'value': 'Hapas', 'logical_op': 'AND'}, {'column': 'category', 'operator': 'EQUALS', 'value': 'Skincare', 'logical_op': 'AND'}, {'column': 'price', 'operator': 'GREATER_THAN', 'value': '100000', 'logical_op': 'AND'}]
+[2025-08-03T12:35:58.431+0000] {clickhouse_utils.py:74} INFO - Extracting data for deal: Hapas
+[2025-08-03T12:35:58.442+0000] {clickhouse_utils.py:103} INFO - Cloumns in result: ['product_base_id', 'product_name', 'product_description', 'category', 'brand', 'product_rating', 'product_image', 'shop_name', 'shop_link', 'revenue', 'month', 'price', 'quantity', 'deal_name', 'load_date', 'record_source']
+[2025-08-03T12:35:58.443+0000] {clickhouse_utils.py:106} INFO - Extracted 2 records for deal Hapas
+[2025-08-03T12:35:58.443+0000] {clickhouse_utils.py:107} INFO - Extracted records: [{'product_base_id': 1, 'product_name': 'Kem chống nắng Hapas SPF50', 'product_description': 'Kem chống nắng cao cấp từ Hapas', 'category': 'Skincare', 'brand': 'Hapas', 'product_rating': 4.5, 'product_image': 'hapas1.jpg', 'shop_name': 'Hapas Official Store', 'shop_link': 'https://hapas.com', 'revenue': Decimal('15000000.00'), 'month': '2025-01', 'price': Decimal('250000.00'), 'quantity': 60, 'deal_name': 'Hapas', 'load_date': datetime.datetime(2025, 8, 3, 12, 35, 58), 'record_source': 'initial_load'}, {'product_base_id': 4, 'product_name': 'Kem dưỡng Hapas Anti-Aging', 'product_description': 'Kem dưỡng chống lão hóa', 'category': 'Skincare', 'brand': 'Hapas', 'product_rating': 4.599999904632568, 'product_image': 'hapas2.jpg', 'shop_name': 'Hapas Official Store', 'shop_link': 'https://hapas.com', 'revenue': Decimal('12000000.00'), 'month': '2025-01', 'price': Decimal('320000.00'), 'quantity': 38, 'deal_name': 'Hapas', 'load_date': datetime.datetime(2025, 8, 3, 12, 35, 58), 'record_source': 'initial_load'}]
+[2025-08-03T12:35:58.443+0000] {initial_load_dag.py:91} INFO - Extracted 2 records for deal Hapas
+[2025-08-03T12:35:58.443+0000] {clickhouse_utils.py:151} INFO - Starting parallel insert of 2 records for deal Hapas
+[2025-08-03T12:35:58.443+0000] {clickhouse_utils.py:153} INFO - Split data into 1 batches
+[2025-08-03T12:35:58.444+0000] {clickhouse_utils.py:170} INFO - Processing batch 0 with 2 records
+[2025-08-03T12:35:58.455+0000] {clickhouse_utils.py:192} INFO - Prepared DataFrame for batch 0 with shape    product_base_id  ...   product_hash_diff
+0                1  ...   88156684361042596
+1                4  ...  609189830086074480
+
+[2 rows x 20 columns]
+[2025-08-03T12:35:58.823+0000] {clickhouse_utils.py:202} INFO - Successfully inserted batch 0
+[2025-08-03T12:35:58.824+0000] {clickhouse_utils.py:162} INFO - Successfully inserted all data for deal Hapas
+[2025-08-03T12:35:58.825+0000] {initial_load_dag.py:97} INFO - Successfully loaded data for deal Hapas
+[2025-08-03T12:35:58.825+0000] {initial_load_dag.py:81} INFO - Processing initial load for deal: Loreal
+[2025-08-03T12:35:58.826+0000] {initial_load_dag.py:84} INFO - Filter conditions for Loreal: [{'column': 'brand', 'operator': 'CONTAINS', 'value': 'Loreal', 'logical_op': 'AND'}, {'column': 'category', 'operator': 'EQUALS', 'value': 'Skincare', 'logical_op': 'AND'}, {'column': 'price', 'operator': 'BETWEEN', 'value': '50000,500000', 'logical_op': 'AND'}]
+[2025-08-03T12:35:58.826+0000] {clickhouse_utils.py:74} INFO - Extracting data for deal: Loreal
+[2025-08-03T12:35:58.841+0000] {clickhouse_utils.py:103} INFO - Cloumns in result: ['product_base_id', 'product_name', 'product_description', 'category', 'brand', 'product_rating', 'product_image', 'shop_name', 'shop_link', 'revenue', 'month', 'price', 'quantity', 'deal_name', 'load_date', 'record_source']
+[2025-08-03T12:35:58.841+0000] {clickhouse_utils.py:106} INFO - Extracted 1 records for deal Loreal
+[2025-08-03T12:35:58.841+0000] {clickhouse_utils.py:107} INFO - Extracted records: [{'product_base_id': 3, 'product_name': 'Sữa rửa mặt Loreal Paris', 'product_description': 'Sữa rửa mặt dịu nhẹ từ Loreal', 'category': 'Skincare', 'brand': 'Loreal', 'product_rating': 4.199999809265137, 'product_image': 'loreal1.jpg', 'shop_name': 'Loreal Paris Store', 'shop_link': 'https://loreal.com', 'revenue': Decimal('8000000.00'), 'month': '2025-01', 'price': Decimal('180000.00'), 'quantity': 44, 'deal_name': 'Loreal', 'load_date': datetime.datetime(2025, 8, 3, 12, 35, 58), 'record_source': 'initial_load'}]
+[2025-08-03T12:35:58.841+0000] {initial_load_dag.py:91} INFO - Extracted 1 records for deal Loreal
+[2025-08-03T12:35:58.842+0000] {clickhouse_utils.py:151} INFO - Starting parallel insert of 1 records for deal Loreal
+[2025-08-03T12:35:58.842+0000] {clickhouse_utils.py:153} INFO - Split data into 1 batches
+[2025-08-03T12:35:58.842+0000] {clickhouse_utils.py:170} INFO - Processing batch 0 with 1 records
+[2025-08-03T12:35:58.853+0000] {clickhouse_utils.py:192} INFO - Prepared DataFrame for batch 0 with shape    product_base_id  ...  product_hash_diff
+0                3  ...  90571362622970531
+
+[1 rows x 20 columns]
+[2025-08-03T12:35:59.223+0000] {clickhouse_utils.py:202} INFO - Successfully inserted batch 0
+[2025-08-03T12:35:59.224+0000] {clickhouse_utils.py:162} INFO - Successfully inserted all data for deal Loreal
+[2025-08-03T12:35:59.224+0000] {initial_load_dag.py:97} INFO - Successfully loaded data for deal Loreal
+[2025-08-03T12:35:59.225+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-08-03T12:35:59.233+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=initial_load_pipeline, task_id=process_new_deals, execution_date=20250803T123554, start_date=20250803T123557, end_date=20250803T123559
+[2025-08-03T12:35:59.271+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-08-03T12:35:59.287+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

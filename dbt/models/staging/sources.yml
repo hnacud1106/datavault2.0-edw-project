@@ -1,0 +1,7 @@
+version: 2
+sources:
+  - name: edw
+    database: edw
+    schema: edw
+    tables:
+      - name: stg_products

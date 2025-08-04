@@ -1,0 +1,36 @@
+name: 'clickhouse_edw'
+version: '1.0.0'
+config-version: 2
+
+profile: 'clickhouse_edw'
+
+model-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+seed-paths: ["data"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+vars:
+  load_date: "{{ run_started_at }}"
+  record_source: "dbt_transformation"
+
+models:
+  clickhouse_edw:
+    +materialized: table
+    staging:
+      +materialized: view
+    vault:
+      +materialized: table
+      hubs:
+        +materialized: incremental
+        +incremental_strategy: append
+        +unique_key: 'hash_key'
+      satellites:
+        +materialized: incremental
+        +incremental_strategy: append
+        +unique_key: ['hash_key', 'load_date']

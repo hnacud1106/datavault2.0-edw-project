@@ -1,0 +1,157 @@
+[2025-08-03T12:35:59.852+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: initial_load_pipeline.run_dbt_transformation manual__2025-08-03T12:35:54.820468+00:00 [queued]>
+[2025-08-03T12:35:59.856+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: initial_load_pipeline.run_dbt_transformation manual__2025-08-03T12:35:54.820468+00:00 [queued]>
+[2025-08-03T12:35:59.856+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 3
+[2025-08-03T12:35:59.860+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): run_dbt_transformation> on 2025-08-03 12:35:54.820468+00:00
+[2025-08-03T12:35:59.863+0000] {standard_task_runner.py:57} INFO - Started process 82 to run task
+[2025-08-03T12:35:59.864+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'initial_load_pipeline', 'run_dbt_transformation', 'manual__2025-08-03T12:35:54.820468+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/initial_load_dag.py', '--cfg-path', '/tmp/tmpo9_e6z_6']
+[2025-08-03T12:35:59.866+0000] {standard_task_runner.py:85} INFO - Job 4: Subtask run_dbt_transformation
+[2025-08-03T12:35:59.891+0000] {task_command.py:415} INFO - Running <TaskInstance: initial_load_pipeline.run_dbt_transformation manual__2025-08-03T12:35:54.820468+00:00 [running]> on host c7fd243484f0
+[2025-08-03T12:36:00.028+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-engineering' AIRFLOW_CTX_DAG_ID='initial_load_pipeline' AIRFLOW_CTX_TASK_ID='run_dbt_transformation' AIRFLOW_CTX_EXECUTION_DATE='2025-08-03T12:35:54.820468+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-03T12:35:54.820468+00:00'
+[2025-08-03T12:36:00.029+0000] {initial_load_dag.py:105} INFO - Starting dbt transformation process
+[2025-08-03T12:36:00.034+0000] {initial_load_dag.py:109} INFO - Running dbt models for deals: Obagi,Hapas,Loreal
+[2025-08-03T12:36:00.034+0000] {initial_load_dag.py:123} INFO - Executing: dbt debug
+[2025-08-03T12:36:02.915+0000] {initial_load_dag.py:134} INFO - STDOUT:
+[0m12:36:01  Running with dbt=1.10.6
+[0m12:36:01  dbt version: 1.10.6
+[0m12:36:01  python version: 3.11.5
+[0m12:36:01  python path: /usr/local/bin/python
+[0m12:36:01  os info: Linux-6.10.14-linuxkit-aarch64-with-glibc2.31
+[0m12:36:01  Using profiles dir at /opt/airflow/dbt
+[0m12:36:01  Using profiles.yml file at /opt/airflow/dbt/profiles.yml
+[0m12:36:01  Using dbt_project.yml file at /opt/airflow/dbt/dbt_project.yml
+[0m12:36:01  adapter type: clickhouse
+[0m12:36:01  adapter version: 1.9.2
+[0m12:36:01  Configuration:
+[0m12:36:01    profiles.yml file [[32mOK found and valid[0m]
+[0m12:36:01    dbt_project.yml file [[32mOK found and valid[0m]
+[0m12:36:01  Required dependencies:
+[0m12:36:01   - git [[31mERROR[0m]
+
+[0m12:36:01  Connection:
+[0m12:36:01    driver: None
+[0m12:36:01    host: clickhouse-edw
+[0m12:36:01    port: 8123
+[0m12:36:01    user: default
+[0m12:36:01    schema: edw
+[0m12:36:01    retries: 1
+[0m12:36:01    cluster: None
+[0m12:36:01    database_engine: None
+[0m12:36:01    cluster_mode: False
+[0m12:36:01    secure: False
+[0m12:36:01    verify: False
+[0m12:36:01    client_cert: None
+[0m12:36:01    client_cert_key: None
+[0m12:36:01    connect_timeout: 10
+[0m12:36:01    send_receive_timeout: 300
+[0m12:36:01    sync_request_timeout: 5
+[0m12:36:01    compress_block_size: 1048576
+[0m12:36:01    compression: 
+[0m12:36:01    check_exchange: True
+[0m12:36:01    custom_settings: {'async_insert': 1, 'wait_for_async_insert': 1}
+[0m12:36:01    use_lw_deletes: False
+[0m12:36:01    allow_automatic_deduplication: False
+[0m12:36:01    tcp_keepalive: False
+[0m12:36:01  Registered adapter: clickhouse=1.9.2
+[0m12:36:01    Connection test: [[32mOK connection ok[0m]
+
+[0m12:36:01  [31m1 check failed:[0m
+[0m12:36:01  Error from git --help: User does not have permissions for this command: "git"
+
+
+[2025-08-03T12:36:02.915+0000] {initial_load_dag.py:139} ERROR - dbt command failed: dbt debug
+[2025-08-03T12:36:02.915+0000] {initial_load_dag.py:140} ERROR - Return code: 1
+[2025-08-03T12:36:02.916+0000] {initial_load_dag.py:141} ERROR - Error output: 
+[2025-08-03T12:36:02.916+0000] {initial_load_dag.py:143} WARNING - dbt debug failed, but continuing...
+[2025-08-03T12:36:02.916+0000] {initial_load_dag.py:123} INFO - Executing: dbt run --select staging
+[2025-08-03T12:36:06.343+0000] {initial_load_dag.py:134} INFO - STDOUT:
+[0m12:36:03  Running with dbt=1.10.6
+[0m12:36:04  Registered adapter: clickhouse=1.9.2
+[0m12:36:04  Found 9 models, 1 source, 477 macros
+[0m12:36:04  
+[0m12:36:04  Concurrency: 1 threads (target='dev')
+[0m12:36:04  
+[0m12:36:04  1 of 2 START sql view model `edw`.`stg_product` ................................ [RUN]
+[0m12:36:04  1 of 2 OK created sql view model `edw`.`stg_product` ........................... [[32mOK[0m in 0.06s]
+[0m12:36:04  2 of 2 START sql view model `edw`.`stg_product_deals` .......................... [RUN]
+[0m12:36:04  2 of 2 OK created sql view model `edw`.`stg_product_deals` ..................... [[32mOK[0m in 0.01s]
+[0m12:36:04  
+[0m12:36:04  Finished running 2 view models in 0 hours 0 minutes and 0.43 seconds (0.43s).
+[0m12:36:04  
+[0m12:36:04  [32mCompleted successfully[0m
+[0m12:36:04  
+[0m12:36:04  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=2
+
+[2025-08-03T12:36:06.343+0000] {initial_load_dag.py:147} INFO - dbt command succeeded: dbt run --select staging
+[2025-08-03T12:36:06.343+0000] {initial_load_dag.py:123} INFO - Executing: dbt run --select vault.hubs
+[2025-08-03T12:36:10.046+0000] {initial_load_dag.py:134} INFO - STDOUT:
+[0m12:36:07  Running with dbt=1.10.6
+[0m12:36:07  Registered adapter: clickhouse=1.9.2
+[0m12:36:07  Found 9 models, 1 source, 477 macros
+[0m12:36:07  
+[0m12:36:07  Concurrency: 1 threads (target='dev')
+[0m12:36:07  
+[0m12:36:08  1 of 2 START sql incremental model `edw`.`hub_deal` ............................ [RUN]
+[0m12:36:08  1 of 2 OK created sql incremental model `edw`.`hub_deal` ....................... [[32mOK[0m in 0.13s]
+[0m12:36:08  2 of 2 START sql incremental model `edw`.`hub_product` ......................... [RUN]
+[0m12:36:08  2 of 2 OK created sql incremental model `edw`.`hub_product` .................... [[32mOK[0m in 0.10s]
+[0m12:36:08  
+[0m12:36:08  Finished running 2 incremental models in 0 hours 0 minutes and 0.55 seconds (0.55s).
+[0m12:36:08  
+[0m12:36:08  [32mCompleted successfully[0m
+[0m12:36:08  
+[0m12:36:08  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=2
+
+[2025-08-03T12:36:10.047+0000] {initial_load_dag.py:147} INFO - dbt command succeeded: dbt run --select vault.hubs
+[2025-08-03T12:36:10.047+0000] {initial_load_dag.py:123} INFO - Executing: dbt run --select vault.links
+[2025-08-03T12:36:13.186+0000] {initial_load_dag.py:134} INFO - STDOUT:
+[0m12:36:11  Running with dbt=1.10.6
+[0m12:36:11  Registered adapter: clickhouse=1.9.2
+[0m12:36:11  Found 9 models, 1 source, 477 macros
+[0m12:36:11  
+[0m12:36:11  Concurrency: 1 threads (target='dev')
+[0m12:36:11  
+[0m12:36:11  1 of 1 START sql incremental model `edw`.`link_product_deal` ................... [RUN]
+[0m12:36:11  1 of 1 OK created sql incremental model `edw`.`link_product_deal` .............. [[32mOK[0m in 0.06s]
+[0m12:36:11  
+[0m12:36:11  Finished running 1 incremental model in 0 hours 0 minutes and 0.34 seconds (0.34s).
+[0m12:36:11  
+[0m12:36:11  [32mCompleted successfully[0m
+[0m12:36:11  
+[0m12:36:11  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+
+[2025-08-03T12:36:13.187+0000] {initial_load_dag.py:147} INFO - dbt command succeeded: dbt run --select vault.links
+[2025-08-03T12:36:13.187+0000] {initial_load_dag.py:123} INFO - Executing: dbt run --select vault.satellites
+[2025-08-03T12:36:16.681+0000] {initial_load_dag.py:134} INFO - STDOUT:
+[0m12:36:14  Running with dbt=1.10.6
+[0m12:36:14  Registered adapter: clickhouse=1.9.2
+[0m12:36:14  Found 9 models, 1 source, 477 macros
+[0m12:36:14  
+[0m12:36:14  Concurrency: 1 threads (target='dev')
+[0m12:36:14  
+[0m12:36:14  1 of 3 START sql incremental model `edw`.`sat_product_current` ................. [RUN]
+[0m12:36:14  1 of 3 OK created sql incremental model `edw`.`sat_product_current` ............ [[32mOK[0m in 0.07s]
+[0m12:36:14  2 of 3 START sql incremental model `edw`.`sat_product_deal_current` ............ [RUN]
+[0m12:36:14  2 of 3 OK created sql incremental model `edw`.`sat_product_deal_current` ....... [[32mOK[0m in 0.04s]
+[0m12:36:14  3 of 3 START sql table model `edw`.`sat_product_history` ....................... [RUN]
+[0m12:36:15  3 of 3 OK created sql table model `edw`.`sat_product_history` .................. [[32mOK[0m in 0.07s]
+[0m12:36:15  
+[0m12:36:15  Finished running 2 incremental models, 1 table model in 0 hours 0 minutes and 0.48 seconds (0.48s).
+[0m12:36:15  
+[0m12:36:15  [32mCompleted successfully[0m
+[0m12:36:15  
+[0m12:36:15  Done. PASS=3 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=3
+
+[2025-08-03T12:36:16.682+0000] {initial_load_dag.py:147} INFO - dbt command succeeded: dbt run --select vault.satellites
+[2025-08-03T12:36:16.682+0000] {initial_load_dag.py:123} INFO - Executing: dbt test
+[2025-08-03T12:36:19.484+0000] {initial_load_dag.py:134} INFO - STDOUT:
+[0m12:36:17  Running with dbt=1.10.6
+[0m12:36:17  Registered adapter: clickhouse=1.9.2
+[0m12:36:18  Found 9 models, 1 source, 477 macros
+[0m12:36:18  Nothing to do. Try checking your model configs and model specification args
+
+[2025-08-03T12:36:19.484+0000] {initial_load_dag.py:147} INFO - dbt command succeeded: dbt test
+[2025-08-03T12:36:19.484+0000] {initial_load_dag.py:149} INFO - dbt transformation completed successfully
+[2025-08-03T12:36:19.484+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-08-03T12:36:19.493+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=initial_load_pipeline, task_id=run_dbt_transformation, execution_date=20250803T123554, start_date=20250803T123559, end_date=20250803T123619
+[2025-08-03T12:36:19.544+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-08-03T12:36:19.555+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

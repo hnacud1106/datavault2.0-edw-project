@@ -1,0 +1,224 @@
+version: '3.8'
+
+x-airflow-common:
+  &airflow-common
+  build: ./airflow
+  depends_on:
+    - postgres-airflow
+    - redis
+    - clickhouse-source
+    - clickhouse-edw
+  environment:
+    &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres-airflow/${POSTGRES_DB}
+    AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres-airflow/${POSTGRES_DB}
+    AIRFLOW__CELERY__BROKER_URL: redis://redis:6379/0
+    AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW_FERNET_KEY}
+    CLICKHOUSE_SOURCE_HOST: clickhouse-source
+    CLICKHOUSE_SOURCE_PORT: ${CLICKHOUSE_SOURCE_PORT}
+    CLICKHOUSE_SOURCE_USER: ${CLICKHOUSE_SOURCE_USER}
+    CLICKHOUSE_SOURCE_PASSWORD: ${CLICKHOUSE_SOURCE_PASSWORD}
+    CLICKHOUSE_SOURCE_DATABASE: ${CLICKHOUSE_SOURCE_DATABASE}
+    CLICKHOUSE_EDW_HOST: clickhouse-edw
+    CLICKHOUSE_EDW_PORT: ${CLICKHOUSE_EDW_PORT}
+    CLICKHOUSE_EDW_USER: ${CLICKHOUSE_EDW_USER}
+    CLICKHOUSE_EDW_PASSWORD: ${CLICKHOUSE_EDW_PASSWORD}
+    CLICKHOUSE_EDW_DATABASE: ${CLICKHOUSE_EDW_DATABASE}
+  env_file:
+    - .env
+  volumes:
+    - ./airflow/dags:/opt/airflow/dags
+    - ./airflow/logs:/opt/airflow/logs
+    - ./airflow/plugins:/opt/airflow/plugins
+    - ./configs:/opt/airflow/configs
+    - ./dbt:/opt/airflow/dbt
+  networks:
+    - edw-network
+
+services:
+  clickhouse-source:
+    image: clickhouse/clickhouse-server:23.8
+    container_name: clickhouse-source
+    environment:
+      CLICKHOUSE_DB: ${CLICKHOUSE_SOURCE_DATABASE}
+      CLICKHOUSE_USER: ${CLICKHOUSE_SOURCE_USER}
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_SOURCE_PASSWORD}
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+      - "9009:9009"
+    volumes:
+      - ./configs/clickhouse/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - clickhouse-source-data:/var/lib/clickhouse
+    networks:
+      - edw-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8123/ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  clickhouse-edw:
+    image: clickhouse/clickhouse-server:23.8
+    container_name: clickhouse-edw
+    environment:
+      CLICKHOUSE_DB: ${CLICKHOUSE_EDW_DATABASE}
+      CLICKHOUSE_USER: ${CLICKHOUSE_EDW_USER}
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_EDW_PASSWORD}
+    ports:
+      - "8124:8123"
+      - "9001:9000"
+      - "9011:9010"
+    volumes:
+      - ./configs/clickhouse/users.xml:/etc/clickhouse-server/users.xml
+      - ./configs/clickhouse/config.xml:/etc/clickhouse-server/config.d/custom.xml
+      - ./configs/clickhouse/edw-schema.sql:/docker-entrypoint-initdb.d/init.sql
+      - clickhouse-edw-data:/var/lib/clickhouse
+    networks:
+      - edw-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8123/ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # Zookeeper
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - edw-network
+
+  # Kafka
+  kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+    networks:
+      - edw-network
+
+  # Schema Registry
+  schema-registry:
+    image: confluentinc/cp-schema-registry:7.4.0
+    container_name: schema-registry
+    depends_on:
+      - kafka
+    ports:
+      - "8081:8081"
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: kafka:29092
+      SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
+    networks:
+      - edw-network
+
+  # Debezium Connect
+  debezium:
+    build: ./debezium
+    container_name: debezium
+    depends_on:
+      - kafka
+      - schema-registry
+      - clickhouse-source
+    ports:
+      - "8083:8083"
+    environment:
+      BOOTSTRAP_SERVERS: kafka:29092
+      GROUP_ID: 1
+      CONFIG_STORAGE_TOPIC: debezium_configs
+      OFFSET_STORAGE_TOPIC: debezium_offsets
+      STATUS_STORAGE_TOPIC: debezium_status
+      KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      CONNECT_KEY_CONVERTER_SCHEMAS_ENABLE: "false"
+      CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE: "false"
+    networks:
+      - edw-network
+
+  # PostgreSQL for Airflow
+  postgres-airflow:
+    image: postgres:15
+    container_name: postgres-airflow
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - edw-network
+
+  # Redis
+  redis:
+    image: redis:7.2-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - edw-network
+
+
+  airflow-webserver:
+    <<: *airflow-common
+    container_name: airflow-webserver
+    environment:
+      <<: *airflow-common-env
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: true
+      AIRFLOW__CORE__LOAD_EXAMPLES: false
+      AIRFLOW__API__AUTH_BACKENDS: airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session
+      AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: true
+    ports:
+      - "8080:8080"
+    command: webserver
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Airflow Scheduler
+  airflow-scheduler:
+    <<: *airflow-common
+    container_name: airflow-scheduler
+    command: scheduler
+    healthcheck:
+      test: ["CMD", "airflow", "jobs", "check", "--job-type", "SchedulerJob"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Airflow Worker
+  airflow-worker:
+    <<: *airflow-common
+    container_name: airflow-worker
+    command: celery worker
+    healthcheck:
+      test: ["CMD", "celery", "--app", "airflow.executors.celery_executor.app", "inspect", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  clickhouse-source-data:
+  clickhouse-edw-data:
+  postgres-data:
+
+networks:
+  edw-network:
+    driver: bridge
