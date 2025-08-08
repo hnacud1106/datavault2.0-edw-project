@@ -7,15 +7,12 @@ from airflow.sensors.base import BaseSensorOperator
 from airflow.utils.context import Context
 from kafka import KafkaConsumer, TopicPartition
 from kafka.errors import KafkaError
-
+from dotenv import load_dotenv
+load_dotenv()
 logger = logging.getLogger(__name__)
 
 
 class KafkaMessageSensor(BaseSensorOperator):
-    """
-    Enhanced Kafka sensor to check for new CDC messages
-    Moved to utils for better code organization
-    """
 
     def __init__(self, kafka_topic: str, **kwargs):
         super().__init__(**kwargs)
@@ -23,9 +20,6 @@ class KafkaMessageSensor(BaseSensorOperator):
         self.kafka_servers = os.getenv('KAFKA_BOOTSTRAP_SERVERS', 'kafka:29092')
 
     def poke(self, context: Context) -> bool:
-        """
-        Check if there are new messages in Kafka topic
-        """
         try:
             logger.info(f"Checking for messages in topic: {self.kafka_topic}")
 
@@ -37,22 +31,17 @@ class KafkaMessageSensor(BaseSensorOperator):
                 enable_auto_commit=False,
                 group_id=f'cdc_sensor_{context["ts"]}'
             )
-
-            # Get topic partitions
             partitions = consumer.partitions_for_topic(self.kafka_topic)
             if not partitions:
                 logger.warning(f"No partitions found for topic {self.kafka_topic}")
                 consumer.close()
                 return False
 
-            # Check for messages in each partition
             topic_partitions = [TopicPartition(self.kafka_topic, p) for p in partitions]
             consumer.assign(topic_partitions)
 
-            # Get end offsets
             end_offsets = consumer.end_offsets(topic_partitions)
 
-            # Check if there are new messages
             has_messages = False
             total_new_messages = 0
 
@@ -88,17 +77,10 @@ class KafkaMessageSensor(BaseSensorOperator):
 
 
 class KafkaHealthChecker:
-    """
-    Utility class for Kafka health checks and diagnostics
-    """
-
     def __init__(self):
         self.kafka_servers = os.getenv('KAFKA_BOOTSTRAP_SERVERS', 'kafka:29092')
 
     def check_topic_exists(self, topic_name: str) -> bool:
-        """
-        Check if Kafka topic exists
-        """
         try:
             consumer = KafkaConsumer(
                 bootstrap_servers=self.kafka_servers.split(','),
@@ -106,6 +88,7 @@ class KafkaHealthChecker:
             )
 
             topics = consumer.topics()
+            logger.info(f"Available topics: {topics}")
             exists = topic_name in topics
 
             consumer.close()
@@ -118,9 +101,6 @@ class KafkaHealthChecker:
             return False
 
     def get_topic_info(self, topic_name: str) -> Dict[str, Any]:
-        """
-        Get detailed information about Kafka topic
-        """
         try:
             consumer = KafkaConsumer(
                 bootstrap_servers=self.kafka_servers.split(','),
@@ -134,7 +114,6 @@ class KafkaHealthChecker:
             topic_partitions = [TopicPartition(topic_name, p) for p in partitions]
             consumer.assign(topic_partitions)
 
-            # Get partition info
             beginning_offsets = consumer.beginning_offsets(topic_partitions)
             end_offsets = consumer.end_offsets(topic_partitions)
 

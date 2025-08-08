@@ -47,7 +47,7 @@ def check_kafka_connectivity(**context) -> None:
 
         health_checker = KafkaHealthChecker()
 
-        topic_name = 'edw_cdc.product_changes_log'
+        topic_name = 'edw_cdc.staging.product_changes_log'
         topic_exists = health_checker.check_topic_exists(topic_name)
 
         if not topic_exists:

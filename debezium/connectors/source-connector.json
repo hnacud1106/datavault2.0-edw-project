@@ -12,9 +12,9 @@
     "validate.non.null": false,
     "poll.interval.ms": 5000,
     "batch.max.rows": 1000,
-    "transforms": "route",
-    "transforms.route.type": "org.apache.kafka.connect.transforms.RegexRouter",
-    "transforms.route.regex": "([^.]+)\\.([^.]+)\\.([^.]+)",
-    "transforms.route.replacement": "$3"
+    "topic.creation.enable": "true",
+    "topic.creation.default.replication.factor": 1,
+    "topic.creation.default.partitions": 3,
+    "topic.creation.default.cleanup.policy": "compact"
   }
 }
