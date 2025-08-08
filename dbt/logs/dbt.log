@@ -3806,3 +3806,1907 @@ FROM with_next_date
 [0m14:24:47.969308 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff86f75810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff86ff4410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff86ff4590>]}
 [0m14:24:47.969674 [debug] [MainThread]: Flushing usage events
 [0m14:24:49.061275 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:34:36.976100 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9e97e3d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9f7b9e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9e97ebd0>]}
+
+
+============================== 07:34:36.980558 | 59f73dd4-4267-4ab8-ae06-159e5328ed2a ==============================
+[0m07:34:36.980558 [info ] [MainThread]: Running with dbt=1.10.6
+[0m07:34:36.981053 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/airflow/dbt', 'version_check': 'True', 'debug': 'False', 'log_path': '/opt/airflow/dbt/logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt debug', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m07:34:36.987708 [info ] [MainThread]: dbt version: 1.10.6
+[0m07:34:36.988045 [info ] [MainThread]: python version: 3.11.5
+[0m07:34:36.988292 [info ] [MainThread]: python path: /usr/local/bin/python
+[0m07:34:36.988531 [info ] [MainThread]: os info: Linux-6.10.14-linuxkit-aarch64-with-glibc2.31
+[0m07:34:37.022886 [info ] [MainThread]: Using profiles dir at /opt/airflow/dbt
+[0m07:34:37.023368 [info ] [MainThread]: Using profiles.yml file at /opt/airflow/dbt/profiles.yml
+[0m07:34:37.023661 [info ] [MainThread]: Using dbt_project.yml file at /opt/airflow/dbt/dbt_project.yml
+[0m07:34:37.024153 [info ] [MainThread]: adapter type: clickhouse
+[0m07:34:37.024465 [info ] [MainThread]: adapter version: 1.9.2
+[0m07:34:37.071570 [info ] [MainThread]: Configuration:
+[0m07:34:37.072021 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m07:34:37.072425 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m07:34:37.072810 [info ] [MainThread]: Required dependencies:
+[0m07:34:37.073137 [debug] [MainThread]: Executing "git --help"
+[0m07:34:37.077147 [info ] [MainThread]:  - git [[31mERROR[0m]
+
+[0m07:34:37.077444 [info ] [MainThread]: Connection:
+[0m07:34:37.077762 [info ] [MainThread]:   driver: None
+[0m07:34:37.078033 [info ] [MainThread]:   host: clickhouse-edw
+[0m07:34:37.078293 [info ] [MainThread]:   port: 8123
+[0m07:34:37.078565 [info ] [MainThread]:   user: default
+[0m07:34:37.078839 [info ] [MainThread]:   schema: edw
+[0m07:34:37.079142 [info ] [MainThread]:   retries: 1
+[0m07:34:37.079409 [info ] [MainThread]:   cluster: None
+[0m07:34:37.079671 [info ] [MainThread]:   database_engine: None
+[0m07:34:37.079934 [info ] [MainThread]:   cluster_mode: False
+[0m07:34:37.080189 [info ] [MainThread]:   secure: False
+[0m07:34:37.080450 [info ] [MainThread]:   verify: False
+[0m07:34:37.080701 [info ] [MainThread]:   client_cert: None
+[0m07:34:37.080983 [info ] [MainThread]:   client_cert_key: None
+[0m07:34:37.081260 [info ] [MainThread]:   connect_timeout: 10
+[0m07:34:37.081546 [info ] [MainThread]:   send_receive_timeout: 300
+[0m07:34:37.081825 [info ] [MainThread]:   sync_request_timeout: 5
+[0m07:34:37.082096 [info ] [MainThread]:   compress_block_size: 1048576
+[0m07:34:37.082369 [info ] [MainThread]:   compression: 
+[0m07:34:37.082650 [info ] [MainThread]:   check_exchange: True
+[0m07:34:37.082923 [info ] [MainThread]:   custom_settings: {'async_insert': 1, 'wait_for_async_insert': 1}
+[0m07:34:37.083193 [info ] [MainThread]:   use_lw_deletes: False
+[0m07:34:37.083560 [info ] [MainThread]:   allow_automatic_deduplication: False
+[0m07:34:37.083828 [info ] [MainThread]:   tcp_keepalive: False
+[0m07:34:37.084191 [info ] [MainThread]: Registered adapter: clickhouse=1.9.2
+[0m07:34:37.119562 [debug] [MainThread]: Acquiring new clickhouse connection 'debug'
+[0m07:34:37.120120 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m07:34:37.436201 [debug] [MainThread]: dbt_clickhouse adapter: On debug: select 1 as id...
+[0m07:34:37.437829 [debug] [MainThread]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:37.448023 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m07:34:37.448460 [info ] [MainThread]: [31m1 check failed:[0m
+[0m07:34:37.448778 [info ] [MainThread]: Error from git --help: User does not have permissions for this command: "git"
+
+[0m07:34:37.449471 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.50550324, "process_in_blocks": "54624", "process_kernel_time": 0.161915, "process_mem_max_rss": "175200", "process_out_blocks": "1409", "process_user_time": 2.067691}
+[0m07:34:37.449882 [debug] [MainThread]: Command `dbt debug` failed at 07:34:37.449820 after 0.51 seconds
+[0m07:34:37.450213 [debug] [MainThread]: Connection 'debug' was left open.
+[0m07:34:37.450547 [debug] [MainThread]: On debug: Close
+[0m07:34:37.450972 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9ed2b9d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9e782790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff86da7350>]}
+[0m07:34:37.451348 [debug] [MainThread]: Flushing usage events
+[0m07:34:38.582298 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:34:39.914092 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb1651a50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb1650750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb1653f10>]}
+
+
+============================== 07:34:39.918306 | d6f0b752-141f-4ba2-ac00-c02a9ba725b9 ==============================
+[0m07:34:39.918306 [info ] [MainThread]: Running with dbt=1.10.6
+[0m07:34:39.919023 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'profiles_dir': '/opt/airflow/dbt', 'log_path': '/opt/airflow/dbt/logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'invocation_command': 'dbt run --select staging', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m07:34:40.048748 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'd6f0b752-141f-4ba2-ac00-c02a9ba725b9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb1291fd0>]}
+[0m07:34:40.081566 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'd6f0b752-141f-4ba2-ac00-c02a9ba725b9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb1401b50>]}
+[0m07:34:40.082306 [info ] [MainThread]: Registered adapter: clickhouse=1.9.2
+[0m07:34:40.120692 [debug] [MainThread]: checksum: f6e4baf4de20596ffb9d14e6ef805989eb0e1950dedc3cc83d03f20aa023904c, vars: {}, profile: , target: , version: 1.10.6
+[0m07:34:40.202794 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m07:34:40.203356 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m07:34:40.223531 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'd6f0b752-141f-4ba2-ac00-c02a9ba725b9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb0f64250>]}
+[0m07:34:40.274859 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m07:34:40.276683 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m07:34:40.290316 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'd6f0b752-141f-4ba2-ac00-c02a9ba725b9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb3b5c8d0>]}
+[0m07:34:40.290859 [info ] [MainThread]: Found 9 models, 1 source, 477 macros
+[0m07:34:40.291198 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd6f0b752-141f-4ba2-ac00-c02a9ba725b9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb237ac50>]}
+[0m07:34:40.292201 [info ] [MainThread]: 
+[0m07:34:40.292530 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m07:34:40.292836 [info ] [MainThread]: 
+[0m07:34:40.293249 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m07:34:40.296621 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m07:34:40.302931 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m07:34:40.561776 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m07:34:40.563233 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:40.571251 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__edw)
+[0m07:34:40.575264 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__edw: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "connection_name": "list__edw"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'edw'
+      
+
+  ...
+[0m07:34:40.580600 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:40.582284 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd6f0b752-141f-4ba2-ac00-c02a9ba725b9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff925e4e50>]}
+[0m07:34:40.585077 [debug] [Thread-1 (]: Began running node model.clickhouse_edw.stg_product
+[0m07:34:40.585678 [info ] [Thread-1 (]: 1 of 2 START sql view model `edw`.`stg_product` ................................ [RUN]
+[0m07:34:40.586114 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__edw, now model.clickhouse_edw.stg_product)
+[0m07:34:40.586450 [debug] [Thread-1 (]: Began compiling node model.clickhouse_edw.stg_product
+[0m07:34:40.591421 [debug] [Thread-1 (]: Writing injected SQL for node "model.clickhouse_edw.stg_product"
+[0m07:34:40.593088 [debug] [Thread-1 (]: Began executing node model.clickhouse_edw.stg_product
+[0m07:34:40.600564 [debug] [Thread-1 (]: Creating new relation stg_product
+[0m07:34:40.608382 [debug] [Thread-1 (]: Writing runtime sql for node "model.clickhouse_edw.stg_product"
+[0m07:34:40.610007 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.stg_product: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.stg_product"} */
+
+
+  create or replace view `edw`.`stg_product` 
+  
+    
+  
+  
+    
+    
+  as (
+    
+
+WITH source_data AS (
+    SELECT DISTINCT
+        product_base_id,
+        product_name,
+        product_description,
+        category,
+        brand,
+        product_rating,
+        product_image,
+        shop_name,
+        shop_link,
+        revenue,
+        month,
+        price,
+        quantity,
+        deal_name,
+        load_date,
+        record_source,
+        product_hash_key,
+        deal_hash_key,
+        product_deal_hash_key,
+        product_hash_diff
+    FROM `edw`.`stg_products`
+),
+
+normalized_products AS (
+    SELECT
+        product_base_id,
+        product_name,
+        product_description,
+        category,
+        brand,
+        product_rating,
+        product_image,
+        shop_name,
+        shop_link,
+        revenue,
+        month,
+        price,
+        quantity,
+        product_hash_key,
+        product_hash_diff,
+        max(load_date) AS load_date,
+        max(record_source) AS record_source
+    FROM source_data
+    GROUP BY
+        product_base_id, product_name, product_description,
+        category, brand, product_rating, product_image,
+        shop_name, shop_link, revenue, month, price, quantity,
+        product_hash_key, product_hash_diff
+)
+
+SELECT * FROM normalized_products
+    
+  )
+      
+      
+                    -- end_of_sql
+                    
+                    ...
+[0m07:34:40.614110 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:40.625288 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd6f0b752-141f-4ba2-ac00-c02a9ba725b9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9256ed10>]}
+[0m07:34:40.625941 [info ] [Thread-1 (]: 1 of 2 OK created sql view model `edw`.`stg_product` ........................... [[32mOK[0m in 0.04s]
+[0m07:34:40.626395 [debug] [Thread-1 (]: Finished running node model.clickhouse_edw.stg_product
+[0m07:34:40.626733 [debug] [Thread-1 (]: Began running node model.clickhouse_edw.stg_product_deals
+[0m07:34:40.627158 [info ] [Thread-1 (]: 2 of 2 START sql view model `edw`.`stg_product_deals` .......................... [RUN]
+[0m07:34:40.627560 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.clickhouse_edw.stg_product, now model.clickhouse_edw.stg_product_deals)
+[0m07:34:40.627892 [debug] [Thread-1 (]: Began compiling node model.clickhouse_edw.stg_product_deals
+[0m07:34:40.629943 [debug] [Thread-1 (]: Writing injected SQL for node "model.clickhouse_edw.stg_product_deals"
+[0m07:34:40.631104 [debug] [Thread-1 (]: Began executing node model.clickhouse_edw.stg_product_deals
+[0m07:34:40.632609 [debug] [Thread-1 (]: Creating new relation stg_product_deals
+[0m07:34:40.633363 [debug] [Thread-1 (]: Writing runtime sql for node "model.clickhouse_edw.stg_product_deals"
+[0m07:34:40.634683 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.stg_product_deals: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.stg_product_deals"} */
+
+
+  create or replace view `edw`.`stg_product_deals` 
+  
+    
+  
+  
+    
+    
+  as (
+    
+
+SELECT DISTINCT
+    product_base_id,
+    deal_name,
+    product_hash_key,
+    deal_hash_key,
+    product_deal_hash_key,
+    max(load_date) AS load_date,
+    max(record_source) AS record_source
+FROM `edw`.`stg_products`
+GROUP BY
+    product_base_id, deal_name,
+    product_hash_key, deal_hash_key, product_deal_hash_key
+    
+  )
+      
+      
+                    -- end_of_sql
+                    
+                    ...
+[0m07:34:40.637342 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:40.638802 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd6f0b752-141f-4ba2-ac00-c02a9ba725b9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb10a6190>]}
+[0m07:34:40.639347 [info ] [Thread-1 (]: 2 of 2 OK created sql view model `edw`.`stg_product_deals` ..................... [[32mOK[0m in 0.01s]
+[0m07:34:40.639755 [debug] [Thread-1 (]: Finished running node model.clickhouse_edw.stg_product_deals
+[0m07:34:40.640748 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m07:34:40.641135 [debug] [MainThread]: Connection 'model.clickhouse_edw.stg_product_deals' was left open.
+[0m07:34:40.641576 [debug] [MainThread]: On model.clickhouse_edw.stg_product_deals: Close
+[0m07:34:40.642129 [info ] [MainThread]: 
+[0m07:34:40.642593 [info ] [MainThread]: Finished running 2 view models in 0 hours 0 minutes and 0.35 seconds (0.35s).
+[0m07:34:40.643165 [debug] [MainThread]: Command end result
+[0m07:34:40.705219 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m07:34:40.706716 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m07:34:40.710653 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/dbt/target/run_results.json
+[0m07:34:40.710941 [info ] [MainThread]: 
+[0m07:34:40.711266 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m07:34:40.711551 [info ] [MainThread]: 
+[0m07:34:40.711846 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=2
+[0m07:34:40.712546 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 0.8365739, "process_in_blocks": "5024", "process_kernel_time": 0.161149, "process_mem_max_rss": "182760", "process_out_blocks": "2142", "process_user_time": 2.239983}
+[0m07:34:40.712939 [debug] [MainThread]: Command `dbt run` succeeded at 07:34:40.712886 after 0.84 seconds
+[0m07:34:40.713267 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb5910250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb58bc9d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb5891950>]}
+[0m07:34:40.713613 [debug] [MainThread]: Flushing usage events
+[0m07:34:41.767830 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:34:43.094440 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff85166790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8554f290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8554f090>]}
+
+
+============================== 07:34:43.098455 | ec2e658a-9916-450d-83ee-0103b7faead5 ==============================
+[0m07:34:43.098455 [info ] [MainThread]: Running with dbt=1.10.6
+[0m07:34:43.098914 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': '/opt/airflow/dbt/logs', 'fail_fast': 'False', 'profiles_dir': '/opt/airflow/dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'invocation_command': 'dbt run --select vault.hubs', 'send_anonymous_usage_stats': 'True'}
+[0m07:34:43.192733 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'ec2e658a-9916-450d-83ee-0103b7faead5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff85111d90>]}
+[0m07:34:43.223965 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'ec2e658a-9916-450d-83ee-0103b7faead5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff857d4390>]}
+[0m07:34:43.224961 [info ] [MainThread]: Registered adapter: clickhouse=1.9.2
+[0m07:34:43.261288 [debug] [MainThread]: checksum: f6e4baf4de20596ffb9d14e6ef805989eb0e1950dedc3cc83d03f20aa023904c, vars: {}, profile: , target: , version: 1.10.6
+[0m07:34:43.324516 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m07:34:43.324939 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m07:34:43.349483 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'ec2e658a-9916-450d-83ee-0103b7faead5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff84c84050>]}
+[0m07:34:43.396828 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m07:34:43.398534 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m07:34:43.410030 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'ec2e658a-9916-450d-83ee-0103b7faead5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff850e3e90>]}
+[0m07:34:43.410570 [info ] [MainThread]: Found 9 models, 1 source, 477 macros
+[0m07:34:43.410901 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ec2e658a-9916-450d-83ee-0103b7faead5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff84fe4a10>]}
+[0m07:34:43.411980 [info ] [MainThread]: 
+[0m07:34:43.412303 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m07:34:43.412594 [info ] [MainThread]: 
+[0m07:34:43.413085 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m07:34:43.416491 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m07:34:43.422853 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m07:34:43.691579 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m07:34:43.693096 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:43.701191 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__edw)
+[0m07:34:43.705470 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__edw: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "connection_name": "list__edw"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'edw'
+      
+
+  ...
+[0m07:34:43.708509 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:43.710366 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ec2e658a-9916-450d-83ee-0103b7faead5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff85110310>]}
+[0m07:34:43.713209 [debug] [Thread-1 (]: Began running node model.clickhouse_edw.hub_deal
+[0m07:34:43.713715 [info ] [Thread-1 (]: 1 of 2 START sql incremental model `edw`.`hub_deal` ............................ [RUN]
+[0m07:34:43.714174 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__edw, now model.clickhouse_edw.hub_deal)
+[0m07:34:43.714533 [debug] [Thread-1 (]: Began compiling node model.clickhouse_edw.hub_deal
+[0m07:34:43.723077 [debug] [Thread-1 (]: Writing injected SQL for node "model.clickhouse_edw.hub_deal"
+[0m07:34:43.724734 [debug] [Thread-1 (]: Began executing node model.clickhouse_edw.hub_deal
+[0m07:34:43.752989 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.hub_deal: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.hub_deal"} */
+
+    select name, type from system.columns where table = 'hub_deal'
+    
+      and database = 'edw'
+    
+    order by position
+  ...
+[0m07:34:43.756688 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:43.759215 [debug] [Thread-1 (]: Writing runtime sql for node "model.clickhouse_edw.hub_deal"
+[0m07:34:43.760458 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.hub_deal: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.hub_deal"} */
+
+        insert into `edw`.`hub_deal`
+        ("deal_hash_key", "deal_business_key", "load_date", "record_source")
+
+WITH deal_data AS (
+    SELECT DISTINCT
+        deal_name,
+        deal_hash_key,
+        load_date,
+        record_source
+    FROM `edw`.`stg_product_deals`
+    WHERE deal_name IS NOT NULL
+)
+
+SELECT
+    deal_hash_key,
+    deal_name AS deal_business_key,
+    load_date,
+    record_source
+FROM deal_data
+
+
+WHERE deal_hash_key NOT IN (
+    SELECT deal_hash_key
+    FROM `edw`.`hub_deal`
+)
+
+      ...
+[0m07:34:43.769558 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m07:34:43.781290 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ec2e658a-9916-450d-83ee-0103b7faead5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff662d0550>]}
+[0m07:34:43.782065 [info ] [Thread-1 (]: 1 of 2 OK created sql incremental model `edw`.`hub_deal` ....................... [[32mOK[0m in 0.07s]
+[0m07:34:43.782731 [debug] [Thread-1 (]: Finished running node model.clickhouse_edw.hub_deal
+[0m07:34:43.783162 [debug] [Thread-1 (]: Began running node model.clickhouse_edw.hub_product
+[0m07:34:43.783716 [info ] [Thread-1 (]: 2 of 2 START sql incremental model `edw`.`hub_product` ......................... [RUN]
+[0m07:34:43.784277 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.clickhouse_edw.hub_deal, now model.clickhouse_edw.hub_product)
+[0m07:34:43.784884 [debug] [Thread-1 (]: Began compiling node model.clickhouse_edw.hub_product
+[0m07:34:43.787578 [debug] [Thread-1 (]: Writing injected SQL for node "model.clickhouse_edw.hub_product"
+[0m07:34:43.788726 [debug] [Thread-1 (]: Began executing node model.clickhouse_edw.hub_product
+[0m07:34:43.792285 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.hub_product: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.hub_product"} */
+
+    select name, type from system.columns where table = 'hub_product'
+    
+      and database = 'edw'
+    
+    order by position
+  ...
+[0m07:34:43.794985 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:43.796242 [debug] [Thread-1 (]: Writing runtime sql for node "model.clickhouse_edw.hub_product"
+[0m07:34:43.797546 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.hub_product: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.hub_product"} */
+
+        insert into `edw`.`hub_product`
+        ("product_hash_key", "product_business_key", "load_date", "record_source")
+
+SELECT DISTINCT
+    product_hash_key,
+    product_base_id AS product_business_key,
+    load_date,
+    record_source
+FROM `edw`.`stg_product`
+
+
+WHERE product_hash_key NOT IN (
+    SELECT product_hash_key
+    FROM `edw`.`hub_product`
+)
+
+      ...
+[0m07:34:43.807360 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m07:34:43.809058 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ec2e658a-9916-450d-83ee-0103b7faead5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff84da0b50>]}
+[0m07:34:43.809782 [info ] [Thread-1 (]: 2 of 2 OK created sql incremental model `edw`.`hub_product` .................... [[32mOK[0m in 0.02s]
+[0m07:34:43.810290 [debug] [Thread-1 (]: Finished running node model.clickhouse_edw.hub_product
+[0m07:34:43.811703 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m07:34:43.812198 [debug] [MainThread]: Connection 'model.clickhouse_edw.hub_product' was left open.
+[0m07:34:43.812685 [debug] [MainThread]: On model.clickhouse_edw.hub_product: Close
+[0m07:34:43.813212 [info ] [MainThread]: 
+[0m07:34:43.813568 [info ] [MainThread]: Finished running 2 incremental models in 0 hours 0 minutes and 0.40 seconds (0.40s).
+[0m07:34:43.814122 [debug] [MainThread]: Command end result
+[0m07:34:43.879279 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m07:34:43.880877 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m07:34:43.884737 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/dbt/target/run_results.json
+[0m07:34:43.885155 [info ] [MainThread]: 
+[0m07:34:43.885537 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m07:34:43.885860 [info ] [MainThread]: 
+[0m07:34:43.886140 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=2
+[0m07:34:43.886916 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 0.82216823, "process_in_blocks": "0", "process_kernel_time": 0.143974, "process_mem_max_rss": "186480", "process_out_blocks": "2133", "process_user_time": 2.308598}
+[0m07:34:43.887418 [debug] [MainThread]: Command `dbt run` succeeded at 07:34:43.887340 after 0.82 seconds
+[0m07:34:43.887858 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8963c350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff85606490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff6629bdd0>]}
+[0m07:34:43.888274 [debug] [MainThread]: Flushing usage events
+[0m07:34:44.884579 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:34:46.168997 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa0f740d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa0f77150>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa0f74a90>]}
+
+
+============================== 07:34:46.172833 | c6c87f8f-9f75-4bb9-b5de-7ebac0863ffb ==============================
+[0m07:34:46.172833 [info ] [MainThread]: Running with dbt=1.10.6
+[0m07:34:46.173335 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/airflow/dbt', 'debug': 'False', 'warn_error': 'None', 'log_path': '/opt/airflow/dbt/logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'invocation_command': 'dbt run --select vault.links', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m07:34:46.259978 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'c6c87f8f-9f75-4bb9-b5de-7ebac0863ffb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa0f21750>]}
+[0m07:34:46.299629 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'c6c87f8f-9f75-4bb9-b5de-7ebac0863ffb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa15e4550>]}
+[0m07:34:46.302812 [info ] [MainThread]: Registered adapter: clickhouse=1.9.2
+[0m07:34:46.351378 [debug] [MainThread]: checksum: f6e4baf4de20596ffb9d14e6ef805989eb0e1950dedc3cc83d03f20aa023904c, vars: {}, profile: , target: , version: 1.10.6
+[0m07:34:46.414303 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m07:34:46.414822 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m07:34:46.434207 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c6c87f8f-9f75-4bb9-b5de-7ebac0863ffb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa0bc2810>]}
+[0m07:34:46.480179 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m07:34:46.481658 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m07:34:46.493039 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'c6c87f8f-9f75-4bb9-b5de-7ebac0863ffb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa0adf3d0>]}
+[0m07:34:46.493514 [info ] [MainThread]: Found 9 models, 1 source, 477 macros
+[0m07:34:46.493867 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c6c87f8f-9f75-4bb9-b5de-7ebac0863ffb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa0d0f190>]}
+[0m07:34:46.494882 [info ] [MainThread]: 
+[0m07:34:46.495218 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m07:34:46.495634 [info ] [MainThread]: 
+[0m07:34:46.496120 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m07:34:46.496916 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m07:34:46.503306 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m07:34:46.774163 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m07:34:46.775873 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:46.787089 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__edw)
+[0m07:34:46.791313 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__edw: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "connection_name": "list__edw"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'edw'
+      
+
+  ...
+[0m07:34:46.794280 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:46.796356 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c6c87f8f-9f75-4bb9-b5de-7ebac0863ffb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff93525e10>]}
+[0m07:34:46.799212 [debug] [Thread-1 (]: Began running node model.clickhouse_edw.link_product_deal
+[0m07:34:46.799771 [info ] [Thread-1 (]: 1 of 1 START sql incremental model `edw`.`link_product_deal` ................... [RUN]
+[0m07:34:46.800243 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__edw, now model.clickhouse_edw.link_product_deal)
+[0m07:34:46.800701 [debug] [Thread-1 (]: Began compiling node model.clickhouse_edw.link_product_deal
+[0m07:34:46.808827 [debug] [Thread-1 (]: Writing injected SQL for node "model.clickhouse_edw.link_product_deal"
+[0m07:34:46.810312 [debug] [Thread-1 (]: Began executing node model.clickhouse_edw.link_product_deal
+[0m07:34:46.839613 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.link_product_deal: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.link_product_deal"} */
+
+    select name, type from system.columns where table = 'link_product_deal'
+    
+      and database = 'edw'
+    
+    order by position
+  ...
+[0m07:34:46.842115 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:46.844672 [debug] [Thread-1 (]: Writing runtime sql for node "model.clickhouse_edw.link_product_deal"
+[0m07:34:46.845996 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.link_product_deal: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.link_product_deal"} */
+
+        insert into `edw`.`link_product_deal`
+        ("product_deal_hash_key", "product_hash_key", "deal_hash_key", "load_date", "record_source")
+
+SELECT DISTINCT
+    product_deal_hash_key,
+    product_hash_key,
+    deal_hash_key,
+    load_date,
+    record_source
+FROM `edw`.`stg_product_deals`
+WHERE product_hash_key IS NOT NULL
+  AND deal_hash_key IS NOT NULL
+
+
+AND product_deal_hash_key NOT IN (
+    SELECT product_deal_hash_key
+    FROM `edw`.`link_product_deal`
+)
+
+      ...
+[0m07:34:46.851081 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:46.862502 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'c6c87f8f-9f75-4bb9-b5de-7ebac0863ffb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa098a590>]}
+[0m07:34:46.863247 [info ] [Thread-1 (]: 1 of 1 OK created sql incremental model `edw`.`link_product_deal` .............. [[32mOK[0m in 0.06s]
+[0m07:34:46.863804 [debug] [Thread-1 (]: Finished running node model.clickhouse_edw.link_product_deal
+[0m07:34:46.864940 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m07:34:46.865299 [debug] [MainThread]: Connection 'model.clickhouse_edw.link_product_deal' was left open.
+[0m07:34:46.865653 [debug] [MainThread]: On model.clickhouse_edw.link_product_deal: Close
+[0m07:34:46.866008 [info ] [MainThread]: 
+[0m07:34:46.866335 [info ] [MainThread]: Finished running 1 incremental model in 0 hours 0 minutes and 0.37 seconds (0.37s).
+[0m07:34:46.866816 [debug] [MainThread]: Command end result
+[0m07:34:46.935824 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m07:34:46.937693 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m07:34:46.941754 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/dbt/target/run_results.json
+[0m07:34:46.942102 [info ] [MainThread]: 
+[0m07:34:46.942467 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m07:34:46.942751 [info ] [MainThread]: 
+[0m07:34:46.943048 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m07:34:46.943821 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 0.80453914, "process_in_blocks": "0", "process_kernel_time": 0.130309, "process_mem_max_rss": "186232", "process_out_blocks": "2125", "process_user_time": 2.196217}
+[0m07:34:46.944231 [debug] [MainThread]: Command `dbt run` succeeded at 07:34:46.944162 after 0.81 seconds
+[0m07:34:46.944595 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa530c390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa528d950>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa1416290>]}
+[0m07:34:46.944921 [debug] [MainThread]: Flushing usage events
+[0m07:34:48.020640 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:34:49.257997 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa2150cd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa2153c10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa2152390>]}
+
+
+============================== 07:34:49.261824 | 283b5ded-3022-4f43-ae16-f9c1f3128b05 ==============================
+[0m07:34:49.261824 [info ] [MainThread]: Running with dbt=1.10.6
+[0m07:34:49.262404 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/opt/airflow/dbt/logs', 'profiles_dir': '/opt/airflow/dbt', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt run --select vault.satellites', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True'}
+[0m07:34:49.357333 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '283b5ded-3022-4f43-ae16-f9c1f3128b05', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa1ff3290>]}
+[0m07:34:49.388212 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '283b5ded-3022-4f43-ae16-f9c1f3128b05', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa25c4450>]}
+[0m07:34:49.388999 [info ] [MainThread]: Registered adapter: clickhouse=1.9.2
+[0m07:34:49.424957 [debug] [MainThread]: checksum: f6e4baf4de20596ffb9d14e6ef805989eb0e1950dedc3cc83d03f20aa023904c, vars: {}, profile: , target: , version: 1.10.6
+[0m07:34:49.489646 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m07:34:49.490153 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m07:34:49.510816 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '283b5ded-3022-4f43-ae16-f9c1f3128b05', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa1ba4910>]}
+[0m07:34:49.560534 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m07:34:49.562234 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m07:34:49.577155 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '283b5ded-3022-4f43-ae16-f9c1f3128b05', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa1eda350>]}
+[0m07:34:49.577627 [info ] [MainThread]: Found 9 models, 1 source, 477 macros
+[0m07:34:49.577946 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '283b5ded-3022-4f43-ae16-f9c1f3128b05', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa1e79d50>]}
+[0m07:34:49.578908 [info ] [MainThread]: 
+[0m07:34:49.579228 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m07:34:49.579525 [info ] [MainThread]: 
+[0m07:34:49.579931 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m07:34:49.583289 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m07:34:49.589644 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m07:34:49.831343 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m07:34:49.832741 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:49.840518 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__edw)
+[0m07:34:49.844648 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__edw: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "connection_name": "list__edw"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'edw'
+      
+
+  ...
+[0m07:34:49.847046 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:49.848837 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '283b5ded-3022-4f43-ae16-f9c1f3128b05', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7f7fb250>]}
+[0m07:34:49.851396 [debug] [Thread-1 (]: Began running node model.clickhouse_edw.sat_product_current
+[0m07:34:49.851866 [info ] [Thread-1 (]: 1 of 3 START sql incremental model `edw`.`sat_product_current` ................. [RUN]
+[0m07:34:49.852287 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__edw, now model.clickhouse_edw.sat_product_current)
+[0m07:34:49.852646 [debug] [Thread-1 (]: Began compiling node model.clickhouse_edw.sat_product_current
+[0m07:34:49.860574 [debug] [Thread-1 (]: Writing injected SQL for node "model.clickhouse_edw.sat_product_current"
+[0m07:34:49.862064 [debug] [Thread-1 (]: Began executing node model.clickhouse_edw.sat_product_current
+[0m07:34:49.889868 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_current: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_current"} */
+
+    select name, type from system.columns where table = 'sat_product_current'
+    
+      and database = 'edw'
+    
+    order by position
+  ...
+[0m07:34:49.892153 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:49.894273 [debug] [Thread-1 (]: Writing runtime sql for node "model.clickhouse_edw.sat_product_current"
+[0m07:34:49.895607 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_current: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_current"} */
+
+        insert into `edw`.`sat_product_current`
+        ("product_hash_key", "product_hash_diff", "product_name", "product_description", "category", "brand", "product_rating", "product_image", "shop_name", "shop_link", "price", "load_date", "record_source")
+
+SELECT
+    product_hash_key,
+    product_hash_diff,
+    product_name,
+    product_description,
+    category,
+    brand,
+    product_rating,
+    product_image,
+    shop_name,
+    shop_link,
+    price,
+    load_date,
+    record_source
+FROM `edw`.`stg_product`
+
+
+WHERE (product_hash_key, product_hash_diff, load_date) NOT IN (
+    SELECT product_hash_key, product_hash_diff, load_date
+    FROM `edw`.`sat_product_current`
+)
+
+      ...
+[0m07:34:49.914699 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m07:34:49.925839 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '283b5ded-3022-4f43-ae16-f9c1f3128b05', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7f0d22d0>]}
+[0m07:34:49.926454 [info ] [Thread-1 (]: 1 of 3 OK created sql incremental model `edw`.`sat_product_current` ............ [[32mOK[0m in 0.07s]
+[0m07:34:49.926889 [debug] [Thread-1 (]: Finished running node model.clickhouse_edw.sat_product_current
+[0m07:34:49.927306 [debug] [Thread-1 (]: Began running node model.clickhouse_edw.sat_product_deal_current
+[0m07:34:49.927791 [info ] [Thread-1 (]: 2 of 3 START sql incremental model `edw`.`sat_product_deal_current` ............ [RUN]
+[0m07:34:49.928176 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.clickhouse_edw.sat_product_current, now model.clickhouse_edw.sat_product_deal_current)
+[0m07:34:49.928503 [debug] [Thread-1 (]: Began compiling node model.clickhouse_edw.sat_product_deal_current
+[0m07:34:49.930798 [debug] [Thread-1 (]: Writing injected SQL for node "model.clickhouse_edw.sat_product_deal_current"
+[0m07:34:49.931834 [debug] [Thread-1 (]: Began executing node model.clickhouse_edw.sat_product_deal_current
+[0m07:34:49.949417 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_deal_current: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_deal_current"} */
+
+            
+
+    
+        create table `edw`.`sat_product_deal_current`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            
+
+SELECT
+    product_deal_hash_key,
+    cityHash64(concat(
+        toString(revenue), '||',
+        month, '||',
+        toString(quantity)
+    )) AS revenue_hash_diff,
+    revenue,
+    month,
+    quantity,
+    load_date,
+    record_source
+FROM `edw`.`stg_products`
+
+
+          )
+        
+        ...
+[0m07:34:49.954033 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:49.959265 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_deal_current: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_deal_current"} */
+
+    select name, type from system.columns where table = 'sat_product_deal_current'
+    
+      and database = 'edw'
+    
+    order by position
+  ...
+[0m07:34:49.961088 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:49.962173 [debug] [Thread-1 (]: Writing runtime sql for node "model.clickhouse_edw.sat_product_deal_current"
+[0m07:34:49.963079 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_deal_current: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_deal_current"} */
+
+        
+  
+    
+    
+    
+        
+         
+
+
+        insert into `edw`.`sat_product_deal_current`
+        ("product_deal_hash_key", "revenue_hash_diff", "revenue", "month", "quantity", "load_date", "record_source")
+
+SELECT
+    product_deal_hash_key,
+    cityHash64(concat(
+        toString(revenue), '||',
+        month, '||',
+        toString(quantity)
+    )) AS revenue_hash_diff,
+    revenue,
+    month,
+    quantity,
+    load_date,
+    record_source
+FROM `edw`.`stg_products`
+
+
+  
+    ...
+[0m07:34:49.965149 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:49.968168 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '283b5ded-3022-4f43-ae16-f9c1f3128b05', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7e75ea50>]}
+[0m07:34:49.968650 [info ] [Thread-1 (]: 2 of 3 OK created sql incremental model `edw`.`sat_product_deal_current` ....... [[32mOK[0m in 0.04s]
+[0m07:34:49.969083 [debug] [Thread-1 (]: Finished running node model.clickhouse_edw.sat_product_deal_current
+[0m07:34:49.969420 [debug] [Thread-1 (]: Began running node model.clickhouse_edw.sat_product_history
+[0m07:34:49.969794 [info ] [Thread-1 (]: 3 of 3 START sql table model `edw`.`sat_product_history` ....................... [RUN]
+[0m07:34:49.970154 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.clickhouse_edw.sat_product_deal_current, now model.clickhouse_edw.sat_product_history)
+[0m07:34:49.970499 [debug] [Thread-1 (]: Began compiling node model.clickhouse_edw.sat_product_history
+[0m07:34:49.973176 [debug] [Thread-1 (]: Writing injected SQL for node "model.clickhouse_edw.sat_product_history"
+[0m07:34:49.974399 [debug] [Thread-1 (]: Began executing node model.clickhouse_edw.sat_product_history
+[0m07:34:50.018616 [debug] [Thread-1 (]: Creating new relation sat_product_history
+[0m07:34:50.019879 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_history: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_history"} */
+
+            
+
+    
+        create table `edw`.`sat_product_history`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            
+
+WITH ranked_data AS (
+    SELECT
+        product_hash_key,
+        product_hash_diff,
+        product_name,
+        product_description,
+        category,
+        brand,
+        product_rating,
+        product_image,
+        shop_name,
+        shop_link,
+        price,
+        load_date,
+        record_source,
+        ROW_NUMBER() OVER (
+            PARTITION BY product_hash_key
+            ORDER BY load_date
+        ) as rn,
+        ROW_NUMBER() OVER (
+            PARTITION BY product_hash_key
+            ORDER BY load_date DESC
+        ) as rn_desc
+    FROM `edw`.`sat_product_current`
+),
+
+with_next_date AS (
+    SELECT
+        r1.product_hash_key,
+        r1.product_hash_diff,
+        r1.product_name,
+        r1.product_description,
+        r1.category,
+        r1.brand,
+        r1.product_rating,
+        r1.product_image,
+        r1.shop_name,
+        r1.shop_link,
+        r1.price,
+        r1.load_date,
+        r1.record_source,
+        COALESCE(r2.load_date, toDateTime('9999-12-31 23:59:59')) AS load_end_date,
+        CASE WHEN r1.rn_desc = 1 THEN 1 ELSE 0 END AS is_current
+    FROM ranked_data r1
+    LEFT JOIN ranked_data r2
+        ON r1.product_hash_key = r2.product_hash_key
+        AND r2.rn = r1.rn + 1
+)
+
+SELECT
+    product_hash_key,
+    product_hash_diff,
+    product_name,
+    product_description,
+    category,
+    brand,
+    product_rating,
+    product_image,
+    shop_name,
+    shop_link,
+    price,
+    load_date,
+    record_source,
+    load_end_date,
+    is_current
+FROM with_next_date
+          )
+        
+        ...
+[0m07:34:50.026622 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m07:34:50.028716 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_history: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_history"} */
+
+    select name, type from system.columns where table = 'sat_product_history'
+    
+      and database = 'edw'
+    
+    order by position
+  ...
+[0m07:34:50.030603 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:50.032078 [debug] [Thread-1 (]: Writing runtime sql for node "model.clickhouse_edw.sat_product_history"
+[0m07:34:50.033309 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_history: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_history"} */
+
+  
+    
+    
+    
+        
+         
+
+
+        insert into `edw`.`sat_product_history`
+        ("product_hash_key", "product_hash_diff", "product_name", "product_description", "category", "brand", "product_rating", "product_image", "shop_name", "shop_link", "price", "load_date", "record_source", "load_end_date", "is_current")
+
+WITH ranked_data AS (
+    SELECT
+        product_hash_key,
+        product_hash_diff,
+        product_name,
+        product_description,
+        category,
+        brand,
+        product_rating,
+        product_image,
+        shop_name,
+        shop_link,
+        price,
+        load_date,
+        record_source,
+        ROW_NUMBER() OVER (
+            PARTITION BY product_hash_key
+            ORDER BY load_date
+        ) as rn,
+        ROW_NUMBER() OVER (
+            PARTITION BY product_hash_key
+            ORDER BY load_date DESC
+        ) as rn_desc
+    FROM `edw`.`sat_product_current`
+),
+
+with_next_date AS (
+    SELECT
+        r1.product_hash_key,
+        r1.product_hash_diff,
+        r1.product_name,
+        r1.product_description,
+        r1.category,
+        r1.brand,
+        r1.product_rating,
+        r1.product_image,
+        r1.shop_name,
+        r1.shop_link,
+        r1.price,
+        r1.load_date,
+        r1.record_source,
+        COALESCE(r2.load_date, toDateTime('9999-12-31 23:59:59')) AS load_end_date,
+        CASE WHEN r1.rn_desc = 1 THEN 1 ELSE 0 END AS is_current
+    FROM ranked_data r1
+    LEFT JOIN ranked_data r2
+        ON r1.product_hash_key = r2.product_hash_key
+        AND r2.rn = r1.rn + 1
+)
+
+SELECT
+    product_hash_key,
+    product_hash_diff,
+    product_name,
+    product_description,
+    category,
+    brand,
+    product_rating,
+    product_image,
+    shop_name,
+    shop_link,
+    price,
+    load_date,
+    record_source,
+    load_end_date,
+    is_current
+FROM with_next_date
+  ...
+[0m07:34:50.040011 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m07:34:50.041433 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_history: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_history"} */
+
+        OPTIMIZE TABLE `edw`.`sat_product_history` FINAL
+      ...
+[0m07:34:50.043148 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m07:34:50.044203 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '283b5ded-3022-4f43-ae16-f9c1f3128b05', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff84333ed0>]}
+[0m07:34:50.044744 [info ] [Thread-1 (]: 3 of 3 OK created sql table model `edw`.`sat_product_history` .................. [[32mOK[0m in 0.07s]
+[0m07:34:50.045209 [debug] [Thread-1 (]: Finished running node model.clickhouse_edw.sat_product_history
+[0m07:34:50.046182 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m07:34:50.046444 [debug] [MainThread]: Connection 'model.clickhouse_edw.sat_product_history' was left open.
+[0m07:34:50.046693 [debug] [MainThread]: On model.clickhouse_edw.sat_product_history: Close
+[0m07:34:50.047014 [info ] [MainThread]: 
+[0m07:34:50.047257 [info ] [MainThread]: Finished running 2 incremental models, 1 table model in 0 hours 0 minutes and 0.47 seconds (0.47s).
+[0m07:34:50.047757 [debug] [MainThread]: Command end result
+[0m07:34:50.066378 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m07:34:50.067632 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m07:34:50.071087 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/dbt/target/run_results.json
+[0m07:34:50.071355 [info ] [MainThread]: 
+[0m07:34:50.071644 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m07:34:50.071869 [info ] [MainThread]: 
+[0m07:34:50.072100 [info ] [MainThread]: Done. PASS=3 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=3
+[0m07:34:50.072722 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 0.8447789, "process_in_blocks": "0", "process_kernel_time": 0.132687, "process_mem_max_rss": "182360", "process_out_blocks": "2166", "process_user_time": 2.218777}
+[0m07:34:50.073067 [debug] [MainThread]: Command `dbt run` succeeded at 07:34:50.073022 after 0.85 seconds
+[0m07:34:50.073423 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa233ea10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa233ed90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa64017d0>]}
+[0m07:34:50.073694 [debug] [MainThread]: Flushing usage events
+[0m07:34:51.112853 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:34:52.450251 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9136dc90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9180e110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9136c810>]}
+
+
+============================== 07:34:52.454270 | db3e5a79-6e9a-4bb4-b8f5-299d526e10ba ==============================
+[0m07:34:52.454270 [info ] [MainThread]: Running with dbt=1.10.6
+[0m07:34:52.454759 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'version_check': 'True', 'log_path': '/opt/airflow/dbt/logs', 'fail_fast': 'False', 'profiles_dir': '/opt/airflow/dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'invocation_command': 'dbt test', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m07:34:52.543815 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'db3e5a79-6e9a-4bb4-b8f5-299d526e10ba', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff911a9390>]}
+[0m07:34:52.572418 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'db3e5a79-6e9a-4bb4-b8f5-299d526e10ba', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff919dc350>]}
+[0m07:34:52.573080 [info ] [MainThread]: Registered adapter: clickhouse=1.9.2
+[0m07:34:52.608176 [debug] [MainThread]: checksum: f6e4baf4de20596ffb9d14e6ef805989eb0e1950dedc3cc83d03f20aa023904c, vars: {}, profile: , target: , version: 1.10.6
+[0m07:34:52.664287 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m07:34:52.664707 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m07:34:52.683401 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'db3e5a79-6e9a-4bb4-b8f5-299d526e10ba', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9116ec10>]}
+[0m07:34:52.725226 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m07:34:52.726539 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m07:34:52.743221 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'db3e5a79-6e9a-4bb4-b8f5-299d526e10ba', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff90ca9d90>]}
+[0m07:34:52.743645 [info ] [MainThread]: Found 9 models, 1 source, 477 macros
+[0m07:34:52.743968 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'db3e5a79-6e9a-4bb4-b8f5-299d526e10ba', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff90ced410>]}
+[0m07:34:52.744875 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m07:34:52.745957 [debug] [MainThread]: Command end result
+[0m07:34:52.762842 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m07:34:52.763980 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m07:34:52.765833 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/dbt/target/run_results.json
+[0m07:34:52.766419 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 0.34510016, "process_in_blocks": "1224", "process_kernel_time": 0.099251, "process_mem_max_rss": "109624", "process_out_blocks": "2112", "process_user_time": 1.276232}
+[0m07:34:52.766769 [debug] [MainThread]: Command `dbt test` succeeded at 07:34:52.766721 after 0.35 seconds
+[0m07:34:52.767067 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95830410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95774590>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff957ad590>]}
+[0m07:34:52.767353 [debug] [MainThread]: Flushing usage events
+[0m07:34:54.019974 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m08:06:41.318993 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff90fcbd90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff90faff90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff90fcb290>]}
+
+
+============================== 08:06:41.323661 | 79273b34-d542-47a8-bd56-6f28b7f635cd ==============================
+[0m08:06:41.323661 [info ] [MainThread]: Running with dbt=1.10.6
+[0m08:06:41.324256 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'profiles_dir': '/opt/airflow/dbt', 'log_path': '/opt/airflow/dbt/logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt debug', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True'}
+[0m08:06:41.331625 [info ] [MainThread]: dbt version: 1.10.6
+[0m08:06:41.332039 [info ] [MainThread]: python version: 3.11.5
+[0m08:06:41.332405 [info ] [MainThread]: python path: /usr/local/bin/python
+[0m08:06:41.332728 [info ] [MainThread]: os info: Linux-6.10.14-linuxkit-aarch64-with-glibc2.31
+[0m08:06:41.368564 [info ] [MainThread]: Using profiles dir at /opt/airflow/dbt
+[0m08:06:41.369179 [info ] [MainThread]: Using profiles.yml file at /opt/airflow/dbt/profiles.yml
+[0m08:06:41.369616 [info ] [MainThread]: Using dbt_project.yml file at /opt/airflow/dbt/dbt_project.yml
+[0m08:06:41.370336 [info ] [MainThread]: adapter type: clickhouse
+[0m08:06:41.370765 [info ] [MainThread]: adapter version: 1.9.2
+[0m08:06:41.425507 [info ] [MainThread]: Configuration:
+[0m08:06:41.426004 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m08:06:41.426387 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m08:06:41.426714 [info ] [MainThread]: Required dependencies:
+[0m08:06:41.427073 [debug] [MainThread]: Executing "git --help"
+[0m08:06:41.428201 [info ] [MainThread]:  - git [[31mERROR[0m]
+
+[0m08:06:41.428609 [info ] [MainThread]: Connection:
+[0m08:06:41.428989 [info ] [MainThread]:   driver: None
+[0m08:06:41.429449 [info ] [MainThread]:   host: clickhouse-edw
+[0m08:06:41.429898 [info ] [MainThread]:   port: 8123
+[0m08:06:41.430250 [info ] [MainThread]:   user: default
+[0m08:06:41.430626 [info ] [MainThread]:   schema: edw
+[0m08:06:41.431104 [info ] [MainThread]:   retries: 1
+[0m08:06:41.431495 [info ] [MainThread]:   cluster: None
+[0m08:06:41.431852 [info ] [MainThread]:   database_engine: None
+[0m08:06:41.432227 [info ] [MainThread]:   cluster_mode: False
+[0m08:06:41.432593 [info ] [MainThread]:   secure: False
+[0m08:06:41.432912 [info ] [MainThread]:   verify: False
+[0m08:06:41.433254 [info ] [MainThread]:   client_cert: None
+[0m08:06:41.433599 [info ] [MainThread]:   client_cert_key: None
+[0m08:06:41.433900 [info ] [MainThread]:   connect_timeout: 10
+[0m08:06:41.434201 [info ] [MainThread]:   send_receive_timeout: 300
+[0m08:06:41.434497 [info ] [MainThread]:   sync_request_timeout: 5
+[0m08:06:41.434785 [info ] [MainThread]:   compress_block_size: 1048576
+[0m08:06:41.435094 [info ] [MainThread]:   compression: 
+[0m08:06:41.435436 [info ] [MainThread]:   check_exchange: True
+[0m08:06:41.435779 [info ] [MainThread]:   custom_settings: {'async_insert': 1, 'wait_for_async_insert': 1}
+[0m08:06:41.436135 [info ] [MainThread]:   use_lw_deletes: False
+[0m08:06:41.436484 [info ] [MainThread]:   allow_automatic_deduplication: False
+[0m08:06:41.436799 [info ] [MainThread]:   tcp_keepalive: False
+[0m08:06:41.437257 [info ] [MainThread]: Registered adapter: clickhouse=1.9.2
+[0m08:06:41.477085 [debug] [MainThread]: Acquiring new clickhouse connection 'debug'
+[0m08:06:41.477492 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m08:06:41.802156 [debug] [MainThread]: dbt_clickhouse adapter: On debug: select 1 as id...
+[0m08:06:41.803618 [debug] [MainThread]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:41.814876 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m08:06:41.815294 [info ] [MainThread]: [31m1 check failed:[0m
+[0m08:06:41.815637 [info ] [MainThread]: Error from git --help: User does not have permissions for this command: "git"
+
+[0m08:06:41.816346 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.53039134, "process_in_blocks": "29032", "process_kernel_time": 0.210907, "process_mem_max_rss": "177088", "process_out_blocks": "1409", "process_user_time": 2.21453}
+[0m08:06:41.816920 [debug] [MainThread]: Command `dbt debug` failed at 08:06:41.816800 after 0.53 seconds
+[0m08:06:41.817415 [debug] [MainThread]: Connection 'debug' was left open.
+[0m08:06:41.817848 [debug] [MainThread]: On debug: Close
+[0m08:06:41.818233 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff90c968d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff72fa11d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff72fa1150>]}
+[0m08:06:41.818590 [debug] [MainThread]: Flushing usage events
+[0m08:06:43.119424 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m08:06:44.567961 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8a273090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8a270f10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8a272990>]}
+
+
+============================== 08:06:44.571778 | 2e73d46c-e114-479b-9310-ed47346e4088 ==============================
+[0m08:06:44.571778 [info ] [MainThread]: Running with dbt=1.10.6
+[0m08:06:44.572240 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'log_path': '/opt/airflow/dbt/logs', 'profiles_dir': '/opt/airflow/dbt', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'invocation_command': 'dbt run --select staging', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m08:06:44.695654 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '2e73d46c-e114-479b-9310-ed47346e4088', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8a23b610>]}
+[0m08:06:44.729085 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '2e73d46c-e114-479b-9310-ed47346e4088', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8a8e0590>]}
+[0m08:06:44.730031 [info ] [MainThread]: Registered adapter: clickhouse=1.9.2
+[0m08:06:44.774683 [debug] [MainThread]: checksum: f6e4baf4de20596ffb9d14e6ef805989eb0e1950dedc3cc83d03f20aa023904c, vars: {}, profile: , target: , version: 1.10.6
+[0m08:06:44.862380 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m08:06:44.862818 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m08:06:44.883449 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '2e73d46c-e114-479b-9310-ed47346e4088', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff89f36a90>]}
+[0m08:06:44.939459 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m08:06:44.941429 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m08:06:44.955091 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '2e73d46c-e114-479b-9310-ed47346e4088', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff89f45190>]}
+[0m08:06:44.955566 [info ] [MainThread]: Found 9 models, 1 source, 477 macros
+[0m08:06:44.955893 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2e73d46c-e114-479b-9310-ed47346e4088', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8a00bc10>]}
+[0m08:06:44.956852 [info ] [MainThread]: 
+[0m08:06:44.957206 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m08:06:44.957511 [info ] [MainThread]: 
+[0m08:06:44.957929 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m08:06:44.961255 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m08:06:44.967675 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m08:06:45.286730 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m08:06:45.288259 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:45.297245 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__edw)
+[0m08:06:45.302128 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__edw: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "connection_name": "list__edw"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'edw'
+      
+
+  ...
+[0m08:06:45.307616 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:45.309152 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2e73d46c-e114-479b-9310-ed47346e4088', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff89ef1b10>]}
+[0m08:06:45.311919 [debug] [Thread-1 (]: Began running node model.clickhouse_edw.stg_product
+[0m08:06:45.312467 [info ] [Thread-1 (]: 1 of 2 START sql view model `edw`.`stg_product` ................................ [RUN]
+[0m08:06:45.312857 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__edw, now model.clickhouse_edw.stg_product)
+[0m08:06:45.313171 [debug] [Thread-1 (]: Began compiling node model.clickhouse_edw.stg_product
+[0m08:06:45.318117 [debug] [Thread-1 (]: Writing injected SQL for node "model.clickhouse_edw.stg_product"
+[0m08:06:45.319878 [debug] [Thread-1 (]: Began executing node model.clickhouse_edw.stg_product
+[0m08:06:45.327501 [debug] [Thread-1 (]: Creating new relation stg_product
+[0m08:06:45.335826 [debug] [Thread-1 (]: Writing runtime sql for node "model.clickhouse_edw.stg_product"
+[0m08:06:45.337596 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.stg_product: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.stg_product"} */
+
+
+  create or replace view `edw`.`stg_product` 
+  
+    
+  
+  
+    
+    
+  as (
+    
+
+WITH source_data AS (
+    SELECT DISTINCT
+        product_base_id,
+        product_name,
+        product_description,
+        category,
+        brand,
+        product_rating,
+        product_image,
+        shop_name,
+        shop_link,
+        revenue,
+        month,
+        price,
+        quantity,
+        deal_name,
+        load_date,
+        record_source,
+        product_hash_key,
+        deal_hash_key,
+        product_deal_hash_key,
+        product_hash_diff
+    FROM `edw`.`stg_products`
+),
+
+normalized_products AS (
+    SELECT
+        product_base_id,
+        product_name,
+        product_description,
+        category,
+        brand,
+        product_rating,
+        product_image,
+        shop_name,
+        shop_link,
+        revenue,
+        month,
+        price,
+        quantity,
+        product_hash_key,
+        product_hash_diff,
+        max(load_date) AS load_date,
+        max(record_source) AS record_source
+    FROM source_data
+    GROUP BY
+        product_base_id, product_name, product_description,
+        category, brand, product_rating, product_image,
+        shop_name, shop_link, revenue, month, price, quantity,
+        product_hash_key, product_hash_diff
+)
+
+SELECT * FROM normalized_products
+    
+  )
+      
+      
+                    -- end_of_sql
+                    
+                    ...
+[0m08:06:45.341991 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:45.353653 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2e73d46c-e114-479b-9310-ed47346e4088', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff67435f10>]}
+[0m08:06:45.354306 [info ] [Thread-1 (]: 1 of 2 OK created sql view model `edw`.`stg_product` ........................... [[32mOK[0m in 0.04s]
+[0m08:06:45.354791 [debug] [Thread-1 (]: Finished running node model.clickhouse_edw.stg_product
+[0m08:06:45.355167 [debug] [Thread-1 (]: Began running node model.clickhouse_edw.stg_product_deals
+[0m08:06:45.355665 [info ] [Thread-1 (]: 2 of 2 START sql view model `edw`.`stg_product_deals` .......................... [RUN]
+[0m08:06:45.356190 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.clickhouse_edw.stg_product, now model.clickhouse_edw.stg_product_deals)
+[0m08:06:45.356547 [debug] [Thread-1 (]: Began compiling node model.clickhouse_edw.stg_product_deals
+[0m08:06:45.359072 [debug] [Thread-1 (]: Writing injected SQL for node "model.clickhouse_edw.stg_product_deals"
+[0m08:06:45.360251 [debug] [Thread-1 (]: Began executing node model.clickhouse_edw.stg_product_deals
+[0m08:06:45.362318 [debug] [Thread-1 (]: Creating new relation stg_product_deals
+[0m08:06:45.363229 [debug] [Thread-1 (]: Writing runtime sql for node "model.clickhouse_edw.stg_product_deals"
+[0m08:06:45.364166 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.stg_product_deals: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.stg_product_deals"} */
+
+
+  create or replace view `edw`.`stg_product_deals` 
+  
+    
+  
+  
+    
+    
+  as (
+    
+
+SELECT DISTINCT
+    product_base_id,
+    deal_name,
+    product_hash_key,
+    deal_hash_key,
+    product_deal_hash_key,
+    max(load_date) AS load_date,
+    max(record_source) AS record_source
+FROM `edw`.`stg_products`
+GROUP BY
+    product_base_id, deal_name,
+    product_hash_key, deal_hash_key, product_deal_hash_key
+    
+  )
+      
+      
+                    -- end_of_sql
+                    
+                    ...
+[0m08:06:45.366536 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:45.367899 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2e73d46c-e114-479b-9310-ed47346e4088', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff6739ce10>]}
+[0m08:06:45.368378 [info ] [Thread-1 (]: 2 of 2 OK created sql view model `edw`.`stg_product_deals` ..................... [[32mOK[0m in 0.01s]
+[0m08:06:45.368787 [debug] [Thread-1 (]: Finished running node model.clickhouse_edw.stg_product_deals
+[0m08:06:45.369763 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m08:06:45.370075 [debug] [MainThread]: Connection 'model.clickhouse_edw.stg_product_deals' was left open.
+[0m08:06:45.370393 [debug] [MainThread]: On model.clickhouse_edw.stg_product_deals: Close
+[0m08:06:45.370748 [info ] [MainThread]: 
+[0m08:06:45.371156 [info ] [MainThread]: Finished running 2 view models in 0 hours 0 minutes and 0.41 seconds (0.41s).
+[0m08:06:45.371751 [debug] [MainThread]: Command end result
+[0m08:06:45.440242 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m08:06:45.442122 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m08:06:45.447423 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/dbt/target/run_results.json
+[0m08:06:45.447888 [info ] [MainThread]: 
+[0m08:06:45.448369 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m08:06:45.448768 [info ] [MainThread]: 
+[0m08:06:45.449174 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=2
+[0m08:06:45.450074 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 0.91775286, "process_in_blocks": "2800", "process_kernel_time": 0.165007, "process_mem_max_rss": "185188", "process_out_blocks": "2142", "process_user_time": 2.440109}
+[0m08:06:45.450564 [debug] [MainThread]: Command `dbt run` succeeded at 08:06:45.450509 after 0.92 seconds
+[0m08:06:45.450904 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8e7a4290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8e6e8990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8e725950>]}
+[0m08:06:45.451250 [debug] [MainThread]: Flushing usage events
+[0m08:06:46.721518 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m08:06:48.213161 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa2772450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa2771f90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa2773ad0>]}
+
+
+============================== 08:06:48.217932 | 4350f5eb-40f6-4d90-8111-8344d20b69b2 ==============================
+[0m08:06:48.217932 [info ] [MainThread]: Running with dbt=1.10.6
+[0m08:06:48.218433 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/airflow/dbt', 'debug': 'False', 'warn_error': 'None', 'log_path': '/opt/airflow/dbt/logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'static_parser': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt run --select vault.hubs', 'send_anonymous_usage_stats': 'True'}
+[0m08:06:48.322777 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '4350f5eb-40f6-4d90-8111-8344d20b69b2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa29e7650>]}
+[0m08:06:48.361274 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '4350f5eb-40f6-4d90-8111-8344d20b69b2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa26c95d0>]}
+[0m08:06:48.362205 [info ] [MainThread]: Registered adapter: clickhouse=1.9.2
+[0m08:06:48.401085 [debug] [MainThread]: checksum: f6e4baf4de20596ffb9d14e6ef805989eb0e1950dedc3cc83d03f20aa023904c, vars: {}, profile: , target: , version: 1.10.6
+[0m08:06:48.471153 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m08:06:48.471707 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m08:06:48.493777 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '4350f5eb-40f6-4d90-8111-8344d20b69b2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa2366190>]}
+[0m08:06:48.549860 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m08:06:48.551507 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m08:06:48.563679 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '4350f5eb-40f6-4d90-8111-8344d20b69b2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa26a2190>]}
+[0m08:06:48.564143 [info ] [MainThread]: Found 9 models, 1 source, 477 macros
+[0m08:06:48.564460 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '4350f5eb-40f6-4d90-8111-8344d20b69b2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa258cad0>]}
+[0m08:06:48.565413 [info ] [MainThread]: 
+[0m08:06:48.565755 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m08:06:48.566038 [info ] [MainThread]: 
+[0m08:06:48.566497 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m08:06:48.569863 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m08:06:48.576356 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m08:06:48.869669 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m08:06:48.871152 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:48.879082 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__edw)
+[0m08:06:48.882982 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__edw: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "connection_name": "list__edw"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'edw'
+      
+
+  ...
+[0m08:06:48.885471 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:48.887133 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '4350f5eb-40f6-4d90-8111-8344d20b69b2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa21bb590>]}
+[0m08:06:48.890309 [debug] [Thread-1 (]: Began running node model.clickhouse_edw.hub_deal
+[0m08:06:48.890817 [info ] [Thread-1 (]: 1 of 2 START sql incremental model `edw`.`hub_deal` ............................ [RUN]
+[0m08:06:48.891298 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__edw, now model.clickhouse_edw.hub_deal)
+[0m08:06:48.891752 [debug] [Thread-1 (]: Began compiling node model.clickhouse_edw.hub_deal
+[0m08:06:48.900624 [debug] [Thread-1 (]: Writing injected SQL for node "model.clickhouse_edw.hub_deal"
+[0m08:06:48.902349 [debug] [Thread-1 (]: Began executing node model.clickhouse_edw.hub_deal
+[0m08:06:48.934621 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.hub_deal: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.hub_deal"} */
+
+    select name, type from system.columns where table = 'hub_deal'
+    
+      and database = 'edw'
+    
+    order by position
+  ...
+[0m08:06:48.938081 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:48.940846 [debug] [Thread-1 (]: Writing runtime sql for node "model.clickhouse_edw.hub_deal"
+[0m08:06:48.942343 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.hub_deal: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.hub_deal"} */
+
+        insert into `edw`.`hub_deal`
+        ("deal_hash_key", "deal_business_key", "load_date", "record_source")
+
+WITH deal_data AS (
+    SELECT DISTINCT
+        deal_name,
+        deal_hash_key,
+        load_date,
+        record_source
+    FROM `edw`.`stg_product_deals`
+    WHERE deal_name IS NOT NULL
+)
+
+SELECT
+    deal_hash_key,
+    deal_name AS deal_business_key,
+    load_date,
+    record_source
+FROM deal_data
+
+
+WHERE deal_hash_key NOT IN (
+    SELECT deal_hash_key
+    FROM `edw`.`hub_deal`
+)
+
+      ...
+[0m08:06:48.951507 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m08:06:48.962784 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '4350f5eb-40f6-4d90-8111-8344d20b69b2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7f82a110>]}
+[0m08:06:48.963564 [info ] [Thread-1 (]: 1 of 2 OK created sql incremental model `edw`.`hub_deal` ....................... [[32mOK[0m in 0.07s]
+[0m08:06:48.964231 [debug] [Thread-1 (]: Finished running node model.clickhouse_edw.hub_deal
+[0m08:06:48.964723 [debug] [Thread-1 (]: Began running node model.clickhouse_edw.hub_product
+[0m08:06:48.965260 [info ] [Thread-1 (]: 2 of 2 START sql incremental model `edw`.`hub_product` ......................... [RUN]
+[0m08:06:48.965780 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.clickhouse_edw.hub_deal, now model.clickhouse_edw.hub_product)
+[0m08:06:48.966244 [debug] [Thread-1 (]: Began compiling node model.clickhouse_edw.hub_product
+[0m08:06:48.969102 [debug] [Thread-1 (]: Writing injected SQL for node "model.clickhouse_edw.hub_product"
+[0m08:06:48.970491 [debug] [Thread-1 (]: Began executing node model.clickhouse_edw.hub_product
+[0m08:06:48.973791 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.hub_product: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.hub_product"} */
+
+    select name, type from system.columns where table = 'hub_product'
+    
+      and database = 'edw'
+    
+    order by position
+  ...
+[0m08:06:48.975927 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:48.977028 [debug] [Thread-1 (]: Writing runtime sql for node "model.clickhouse_edw.hub_product"
+[0m08:06:48.978179 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.hub_product: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.hub_product"} */
+
+        insert into `edw`.`hub_product`
+        ("product_hash_key", "product_business_key", "load_date", "record_source")
+
+SELECT DISTINCT
+    product_hash_key,
+    product_base_id AS product_business_key,
+    load_date,
+    record_source
+FROM `edw`.`stg_product`
+
+
+WHERE product_hash_key NOT IN (
+    SELECT product_hash_key
+    FROM `edw`.`hub_product`
+)
+
+      ...
+[0m08:06:48.986349 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m08:06:48.987863 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '4350f5eb-40f6-4d90-8111-8344d20b69b2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa22496d0>]}
+[0m08:06:48.988373 [info ] [Thread-1 (]: 2 of 2 OK created sql incremental model `edw`.`hub_product` .................... [[32mOK[0m in 0.02s]
+[0m08:06:48.988806 [debug] [Thread-1 (]: Finished running node model.clickhouse_edw.hub_product
+[0m08:06:48.989760 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m08:06:48.990060 [debug] [MainThread]: Connection 'model.clickhouse_edw.hub_product' was left open.
+[0m08:06:48.990421 [debug] [MainThread]: On model.clickhouse_edw.hub_product: Close
+[0m08:06:48.990811 [info ] [MainThread]: 
+[0m08:06:48.991146 [info ] [MainThread]: Finished running 2 incremental models in 0 hours 0 minutes and 0.42 seconds (0.42s).
+[0m08:06:48.991682 [debug] [MainThread]: Command end result
+[0m08:06:49.058269 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m08:06:49.060221 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m08:06:49.064712 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/dbt/target/run_results.json
+[0m08:06:49.065029 [info ] [MainThread]: 
+[0m08:06:49.065385 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m08:06:49.065663 [info ] [MainThread]: 
+[0m08:06:49.065950 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=2
+[0m08:06:49.066699 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 0.892296, "process_in_blocks": "0", "process_kernel_time": 0.165859, "process_mem_max_rss": "186512", "process_out_blocks": "2133", "process_user_time": 2.489896}
+[0m08:06:49.067095 [debug] [MainThread]: Command `dbt run` succeeded at 08:06:49.067042 after 0.89 seconds
+[0m08:06:49.067442 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa6af8390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa6a3c810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffa6a798d0>]}
+[0m08:06:49.067799 [debug] [MainThread]: Flushing usage events
+[0m08:06:50.159089 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m08:06:51.574767 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff90c69dd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff90f822d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff90c6a0d0>]}
+
+
+============================== 08:06:51.579474 | 939bedca-f151-40c1-9aba-d9291f11ae65 ==============================
+[0m08:06:51.579474 [info ] [MainThread]: Running with dbt=1.10.6
+[0m08:06:51.580134 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/airflow/dbt', 'debug': 'False', 'version_check': 'True', 'log_path': '/opt/airflow/dbt/logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'invocation_command': 'dbt run --select vault.links', 'log_format': 'default', 'introspect': 'True', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m08:06:51.681085 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '939bedca-f151-40c1-9aba-d9291f11ae65', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff90c02850>]}
+[0m08:06:51.716530 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '939bedca-f151-40c1-9aba-d9291f11ae65', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff912844d0>]}
+[0m08:06:51.717363 [info ] [MainThread]: Registered adapter: clickhouse=1.9.2
+[0m08:06:51.756614 [debug] [MainThread]: checksum: f6e4baf4de20596ffb9d14e6ef805989eb0e1950dedc3cc83d03f20aa023904c, vars: {}, profile: , target: , version: 1.10.6
+[0m08:06:51.822199 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m08:06:51.822760 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m08:06:51.843727 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '939bedca-f151-40c1-9aba-d9291f11ae65', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff908dba10>]}
+[0m08:06:51.897390 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m08:06:51.899297 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m08:06:51.913930 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '939bedca-f151-40c1-9aba-d9291f11ae65', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff90a56a10>]}
+[0m08:06:51.914464 [info ] [MainThread]: Found 9 models, 1 source, 477 macros
+[0m08:06:51.914816 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '939bedca-f151-40c1-9aba-d9291f11ae65', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff909e4910>]}
+[0m08:06:51.915848 [info ] [MainThread]: 
+[0m08:06:51.916221 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m08:06:51.916515 [info ] [MainThread]: 
+[0m08:06:51.916977 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m08:06:51.917716 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m08:06:51.924406 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m08:06:52.217846 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m08:06:52.219678 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:52.231064 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__edw)
+[0m08:06:52.236182 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__edw: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "connection_name": "list__edw"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'edw'
+      
+
+  ...
+[0m08:06:52.239310 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:52.241332 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '939bedca-f151-40c1-9aba-d9291f11ae65', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff90e09bd0>]}
+[0m08:06:52.244183 [debug] [Thread-1 (]: Began running node model.clickhouse_edw.link_product_deal
+[0m08:06:52.244850 [info ] [Thread-1 (]: 1 of 1 START sql incremental model `edw`.`link_product_deal` ................... [RUN]
+[0m08:06:52.245558 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__edw, now model.clickhouse_edw.link_product_deal)
+[0m08:06:52.246040 [debug] [Thread-1 (]: Began compiling node model.clickhouse_edw.link_product_deal
+[0m08:06:52.254648 [debug] [Thread-1 (]: Writing injected SQL for node "model.clickhouse_edw.link_product_deal"
+[0m08:06:52.256382 [debug] [Thread-1 (]: Began executing node model.clickhouse_edw.link_product_deal
+[0m08:06:52.285552 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.link_product_deal: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.link_product_deal"} */
+
+    select name, type from system.columns where table = 'link_product_deal'
+    
+      and database = 'edw'
+    
+    order by position
+  ...
+[0m08:06:52.288153 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:52.290561 [debug] [Thread-1 (]: Writing runtime sql for node "model.clickhouse_edw.link_product_deal"
+[0m08:06:52.292077 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.link_product_deal: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.link_product_deal"} */
+
+        insert into `edw`.`link_product_deal`
+        ("product_deal_hash_key", "product_hash_key", "deal_hash_key", "load_date", "record_source")
+
+SELECT DISTINCT
+    product_deal_hash_key,
+    product_hash_key,
+    deal_hash_key,
+    load_date,
+    record_source
+FROM `edw`.`stg_product_deals`
+WHERE product_hash_key IS NOT NULL
+  AND deal_hash_key IS NOT NULL
+
+
+AND product_deal_hash_key NOT IN (
+    SELECT product_deal_hash_key
+    FROM `edw`.`link_product_deal`
+)
+
+      ...
+[0m08:06:52.297645 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m08:06:52.309596 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '939bedca-f151-40c1-9aba-d9291f11ae65', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff71d95890>]}
+[0m08:06:52.310402 [info ] [Thread-1 (]: 1 of 1 OK created sql incremental model `edw`.`link_product_deal` .............. [[32mOK[0m in 0.06s]
+[0m08:06:52.310997 [debug] [Thread-1 (]: Finished running node model.clickhouse_edw.link_product_deal
+[0m08:06:52.312368 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m08:06:52.312791 [debug] [MainThread]: Connection 'model.clickhouse_edw.link_product_deal' was left open.
+[0m08:06:52.313151 [debug] [MainThread]: On model.clickhouse_edw.link_product_deal: Close
+[0m08:06:52.313571 [info ] [MainThread]: 
+[0m08:06:52.313996 [info ] [MainThread]: Finished running 1 incremental model in 0 hours 0 minutes and 0.40 seconds (0.40s).
+[0m08:06:52.314603 [debug] [MainThread]: Command end result
+[0m08:06:52.377668 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m08:06:52.379668 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m08:06:52.383759 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/dbt/target/run_results.json
+[0m08:06:52.384126 [info ] [MainThread]: 
+[0m08:06:52.384631 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m08:06:52.385058 [info ] [MainThread]: 
+[0m08:06:52.385485 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m08:06:52.386641 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 0.8455832, "process_in_blocks": "104", "process_kernel_time": 0.183845, "process_mem_max_rss": "186356", "process_out_blocks": "2125", "process_user_time": 2.366007}
+[0m08:06:52.387200 [debug] [MainThread]: Command `dbt run` succeeded at 08:06:52.387065 after 0.85 seconds
+[0m08:06:52.387615 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95200190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff90ef0f50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff950798d0>]}
+[0m08:06:52.387959 [debug] [MainThread]: Flushing usage events
+[0m08:06:53.476592 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m08:06:54.761561 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8f367790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8f365e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8f366490>]}
+
+
+============================== 08:06:54.765342 | bf5359dc-03bb-4514-9d6a-e08e588b92c5 ==============================
+[0m08:06:54.765342 [info ] [MainThread]: Running with dbt=1.10.6
+[0m08:06:54.765818 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/airflow/dbt', 'version_check': 'True', 'fail_fast': 'False', 'log_path': '/opt/airflow/dbt/logs', 'warn_error': 'None', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt run --select vault.satellites', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m08:06:54.869744 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'bf5359dc-03bb-4514-9d6a-e08e588b92c5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8f609690>]}
+[0m08:06:54.906000 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'bf5359dc-03bb-4514-9d6a-e08e588b92c5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8f9d4350>]}
+[0m08:06:54.906760 [info ] [MainThread]: Registered adapter: clickhouse=1.9.2
+[0m08:06:54.944860 [debug] [MainThread]: checksum: f6e4baf4de20596ffb9d14e6ef805989eb0e1950dedc3cc83d03f20aa023904c, vars: {}, profile: , target: , version: 1.10.6
+[0m08:06:55.016714 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m08:06:55.017330 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m08:06:55.039664 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'bf5359dc-03bb-4514-9d6a-e08e588b92c5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8efb0f90>]}
+[0m08:06:55.093181 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m08:06:55.095145 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m08:06:55.111504 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'bf5359dc-03bb-4514-9d6a-e08e588b92c5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8f2e8f10>]}
+[0m08:06:55.112876 [info ] [MainThread]: Found 9 models, 1 source, 477 macros
+[0m08:06:55.113631 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'bf5359dc-03bb-4514-9d6a-e08e588b92c5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8ed69d10>]}
+[0m08:06:55.114940 [info ] [MainThread]: 
+[0m08:06:55.115455 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m08:06:55.115847 [info ] [MainThread]: 
+[0m08:06:55.116299 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m08:06:55.120309 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m08:06:55.126966 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m08:06:55.419304 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m08:06:55.420828 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:55.429216 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__edw)
+[0m08:06:55.433025 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__edw: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "connection_name": "list__edw"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'edw'
+      
+
+  ...
+[0m08:06:55.435472 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:55.437218 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'bf5359dc-03bb-4514-9d6a-e08e588b92c5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff719aa050>]}
+[0m08:06:55.439913 [debug] [Thread-1 (]: Began running node model.clickhouse_edw.sat_product_current
+[0m08:06:55.440398 [info ] [Thread-1 (]: 1 of 3 START sql incremental model `edw`.`sat_product_current` ................. [RUN]
+[0m08:06:55.440830 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__edw, now model.clickhouse_edw.sat_product_current)
+[0m08:06:55.441185 [debug] [Thread-1 (]: Began compiling node model.clickhouse_edw.sat_product_current
+[0m08:06:55.449680 [debug] [Thread-1 (]: Writing injected SQL for node "model.clickhouse_edw.sat_product_current"
+[0m08:06:55.451998 [debug] [Thread-1 (]: Began executing node model.clickhouse_edw.sat_product_current
+[0m08:06:55.481361 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_current: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_current"} */
+
+    select name, type from system.columns where table = 'sat_product_current'
+    
+      and database = 'edw'
+    
+    order by position
+  ...
+[0m08:06:55.483734 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:55.485830 [debug] [Thread-1 (]: Writing runtime sql for node "model.clickhouse_edw.sat_product_current"
+[0m08:06:55.486953 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_current: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_current"} */
+
+        insert into `edw`.`sat_product_current`
+        ("product_hash_key", "product_hash_diff", "product_name", "product_description", "category", "brand", "product_rating", "product_image", "shop_name", "shop_link", "price", "load_date", "record_source")
+
+SELECT
+    product_hash_key,
+    product_hash_diff,
+    product_name,
+    product_description,
+    category,
+    brand,
+    product_rating,
+    product_image,
+    shop_name,
+    shop_link,
+    price,
+    load_date,
+    record_source
+FROM `edw`.`stg_product`
+
+
+WHERE (product_hash_key, product_hash_diff, load_date) NOT IN (
+    SELECT product_hash_key, product_hash_diff, load_date
+    FROM `edw`.`sat_product_current`
+)
+
+      ...
+[0m08:06:55.510529 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m08:06:55.521802 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'bf5359dc-03bb-4514-9d6a-e08e588b92c5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7036c3d0>]}
+[0m08:06:55.522385 [info ] [Thread-1 (]: 1 of 3 OK created sql incremental model `edw`.`sat_product_current` ............ [[32mOK[0m in 0.08s]
+[0m08:06:55.522863 [debug] [Thread-1 (]: Finished running node model.clickhouse_edw.sat_product_current
+[0m08:06:55.523244 [debug] [Thread-1 (]: Began running node model.clickhouse_edw.sat_product_deal_current
+[0m08:06:55.523770 [info ] [Thread-1 (]: 2 of 3 START sql incremental model `edw`.`sat_product_deal_current` ............ [RUN]
+[0m08:06:55.524135 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.clickhouse_edw.sat_product_current, now model.clickhouse_edw.sat_product_deal_current)
+[0m08:06:55.524412 [debug] [Thread-1 (]: Began compiling node model.clickhouse_edw.sat_product_deal_current
+[0m08:06:55.526612 [debug] [Thread-1 (]: Writing injected SQL for node "model.clickhouse_edw.sat_product_deal_current"
+[0m08:06:55.527429 [debug] [Thread-1 (]: Began executing node model.clickhouse_edw.sat_product_deal_current
+[0m08:06:55.545634 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_deal_current: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_deal_current"} */
+
+            
+
+    
+        create table `edw`.`sat_product_deal_current`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            
+
+SELECT
+    product_deal_hash_key,
+    cityHash64(concat(
+        toString(revenue), '||',
+        month, '||',
+        toString(quantity)
+    )) AS revenue_hash_diff,
+    revenue,
+    month,
+    quantity,
+    load_date,
+    record_source
+FROM `edw`.`stg_products`
+
+
+          )
+        
+        ...
+[0m08:06:55.550500 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:55.556189 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_deal_current: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_deal_current"} */
+
+    select name, type from system.columns where table = 'sat_product_deal_current'
+    
+      and database = 'edw'
+    
+    order by position
+  ...
+[0m08:06:55.558200 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:55.559446 [debug] [Thread-1 (]: Writing runtime sql for node "model.clickhouse_edw.sat_product_deal_current"
+[0m08:06:55.560272 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_deal_current: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_deal_current"} */
+
+        
+  
+    
+    
+    
+        
+         
+
+
+        insert into `edw`.`sat_product_deal_current`
+        ("product_deal_hash_key", "revenue_hash_diff", "revenue", "month", "quantity", "load_date", "record_source")
+
+SELECT
+    product_deal_hash_key,
+    cityHash64(concat(
+        toString(revenue), '||',
+        month, '||',
+        toString(quantity)
+    )) AS revenue_hash_diff,
+    revenue,
+    month,
+    quantity,
+    load_date,
+    record_source
+FROM `edw`.`stg_products`
+
+
+  
+    ...
+[0m08:06:55.562453 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:55.565767 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'bf5359dc-03bb-4514-9d6a-e08e588b92c5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff703421d0>]}
+[0m08:06:55.566257 [info ] [Thread-1 (]: 2 of 3 OK created sql incremental model `edw`.`sat_product_deal_current` ....... [[32mOK[0m in 0.04s]
+[0m08:06:55.566648 [debug] [Thread-1 (]: Finished running node model.clickhouse_edw.sat_product_deal_current
+[0m08:06:55.566992 [debug] [Thread-1 (]: Began running node model.clickhouse_edw.sat_product_history
+[0m08:06:55.567401 [info ] [Thread-1 (]: 3 of 3 START sql table model `edw`.`sat_product_history` ....................... [RUN]
+[0m08:06:55.567733 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.clickhouse_edw.sat_product_deal_current, now model.clickhouse_edw.sat_product_history)
+[0m08:06:55.567997 [debug] [Thread-1 (]: Began compiling node model.clickhouse_edw.sat_product_history
+[0m08:06:55.571072 [debug] [Thread-1 (]: Writing injected SQL for node "model.clickhouse_edw.sat_product_history"
+[0m08:06:55.572324 [debug] [Thread-1 (]: Began executing node model.clickhouse_edw.sat_product_history
+[0m08:06:55.619172 [debug] [Thread-1 (]: Creating new relation sat_product_history
+[0m08:06:55.620202 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_history: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_history"} */
+
+            
+
+    
+        create table `edw`.`sat_product_history`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            
+
+WITH ranked_data AS (
+    SELECT
+        product_hash_key,
+        product_hash_diff,
+        product_name,
+        product_description,
+        category,
+        brand,
+        product_rating,
+        product_image,
+        shop_name,
+        shop_link,
+        price,
+        load_date,
+        record_source,
+        ROW_NUMBER() OVER (
+            PARTITION BY product_hash_key
+            ORDER BY load_date
+        ) as rn,
+        ROW_NUMBER() OVER (
+            PARTITION BY product_hash_key
+            ORDER BY load_date DESC
+        ) as rn_desc
+    FROM `edw`.`sat_product_current`
+),
+
+with_next_date AS (
+    SELECT
+        r1.product_hash_key,
+        r1.product_hash_diff,
+        r1.product_name,
+        r1.product_description,
+        r1.category,
+        r1.brand,
+        r1.product_rating,
+        r1.product_image,
+        r1.shop_name,
+        r1.shop_link,
+        r1.price,
+        r1.load_date,
+        r1.record_source,
+        COALESCE(r2.load_date, toDateTime('9999-12-31 23:59:59')) AS load_end_date,
+        CASE WHEN r1.rn_desc = 1 THEN 1 ELSE 0 END AS is_current
+    FROM ranked_data r1
+    LEFT JOIN ranked_data r2
+        ON r1.product_hash_key = r2.product_hash_key
+        AND r2.rn = r1.rn + 1
+)
+
+SELECT
+    product_hash_key,
+    product_hash_diff,
+    product_name,
+    product_description,
+    category,
+    brand,
+    product_rating,
+    product_image,
+    shop_name,
+    shop_link,
+    price,
+    load_date,
+    record_source,
+    load_end_date,
+    is_current
+FROM with_next_date
+          )
+        
+        ...
+[0m08:06:55.626898 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m08:06:55.628815 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_history: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_history"} */
+
+    select name, type from system.columns where table = 'sat_product_history'
+    
+      and database = 'edw'
+    
+    order by position
+  ...
+[0m08:06:55.630613 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:55.631966 [debug] [Thread-1 (]: Writing runtime sql for node "model.clickhouse_edw.sat_product_history"
+[0m08:06:55.633059 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_history: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_history"} */
+
+  
+    
+    
+    
+        
+         
+
+
+        insert into `edw`.`sat_product_history`
+        ("product_hash_key", "product_hash_diff", "product_name", "product_description", "category", "brand", "product_rating", "product_image", "shop_name", "shop_link", "price", "load_date", "record_source", "load_end_date", "is_current")
+
+WITH ranked_data AS (
+    SELECT
+        product_hash_key,
+        product_hash_diff,
+        product_name,
+        product_description,
+        category,
+        brand,
+        product_rating,
+        product_image,
+        shop_name,
+        shop_link,
+        price,
+        load_date,
+        record_source,
+        ROW_NUMBER() OVER (
+            PARTITION BY product_hash_key
+            ORDER BY load_date
+        ) as rn,
+        ROW_NUMBER() OVER (
+            PARTITION BY product_hash_key
+            ORDER BY load_date DESC
+        ) as rn_desc
+    FROM `edw`.`sat_product_current`
+),
+
+with_next_date AS (
+    SELECT
+        r1.product_hash_key,
+        r1.product_hash_diff,
+        r1.product_name,
+        r1.product_description,
+        r1.category,
+        r1.brand,
+        r1.product_rating,
+        r1.product_image,
+        r1.shop_name,
+        r1.shop_link,
+        r1.price,
+        r1.load_date,
+        r1.record_source,
+        COALESCE(r2.load_date, toDateTime('9999-12-31 23:59:59')) AS load_end_date,
+        CASE WHEN r1.rn_desc = 1 THEN 1 ELSE 0 END AS is_current
+    FROM ranked_data r1
+    LEFT JOIN ranked_data r2
+        ON r1.product_hash_key = r2.product_hash_key
+        AND r2.rn = r1.rn + 1
+)
+
+SELECT
+    product_hash_key,
+    product_hash_diff,
+    product_name,
+    product_description,
+    category,
+    brand,
+    product_rating,
+    product_image,
+    shop_name,
+    shop_link,
+    price,
+    load_date,
+    record_source,
+    load_end_date,
+    is_current
+FROM with_next_date
+  ...
+[0m08:06:55.639638 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m08:06:55.641012 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.clickhouse_edw.sat_product_history: /* {"app": "dbt", "dbt_version": "1.10.6", "profile_name": "clickhouse_edw", "target_name": "dev", "node_id": "model.clickhouse_edw.sat_product_history"} */
+
+        OPTIMIZE TABLE `edw`.`sat_product_history` FINAL
+      ...
+[0m08:06:55.642894 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m08:06:55.643843 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'bf5359dc-03bb-4514-9d6a-e08e588b92c5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff703c0710>]}
+[0m08:06:55.644383 [info ] [Thread-1 (]: 3 of 3 OK created sql table model `edw`.`sat_product_history` .................. [[32mOK[0m in 0.08s]
+[0m08:06:55.644801 [debug] [Thread-1 (]: Finished running node model.clickhouse_edw.sat_product_history
+[0m08:06:55.645923 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m08:06:55.646272 [debug] [MainThread]: Connection 'model.clickhouse_edw.sat_product_history' was left open.
+[0m08:06:55.646568 [debug] [MainThread]: On model.clickhouse_edw.sat_product_history: Close
+[0m08:06:55.646925 [info ] [MainThread]: 
+[0m08:06:55.647224 [info ] [MainThread]: Finished running 2 incremental models, 1 table model in 0 hours 0 minutes and 0.53 seconds (0.53s).
+[0m08:06:55.647828 [debug] [MainThread]: Command end result
+[0m08:06:55.669133 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m08:06:55.670591 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m08:06:55.674390 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/dbt/target/run_results.json
+[0m08:06:55.674713 [info ] [MainThread]: 
+[0m08:06:55.675067 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m08:06:55.675370 [info ] [MainThread]: 
+[0m08:06:55.675659 [info ] [MainThread]: Done. PASS=3 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=3
+[0m08:06:55.676333 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 0.9435265, "process_in_blocks": "0", "process_kernel_time": 0.145112, "process_mem_max_rss": "186592", "process_out_blocks": "2166", "process_user_time": 2.332804}
+[0m08:06:55.676727 [debug] [MainThread]: Command `dbt run` succeeded at 08:06:55.676674 after 0.94 seconds
+[0m08:06:55.677048 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8f3b9050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff937cc6d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff937a17d0>]}
+[0m08:06:55.677373 [debug] [MainThread]: Flushing usage events
+[0m08:06:56.752398 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m08:06:58.174310 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb3e71310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb3e72010>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb3e70c90>]}
+
+
+============================== 08:06:58.178748 | 8972a980-ab21-4131-82ff-0096881e854d ==============================
+[0m08:06:58.178748 [info ] [MainThread]: Running with dbt=1.10.6
+[0m08:06:58.179386 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': '/opt/airflow/dbt/logs', 'debug': 'False', 'profiles_dir': '/opt/airflow/dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'invocation_command': 'dbt test', 'log_format': 'default', 'introspect': 'True', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m08:06:58.280039 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '8972a980-ab21-4131-82ff-0096881e854d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb3def8d0>]}
+[0m08:06:58.310117 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '8972a980-ab21-4131-82ff-0096881e854d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb44e0350>]}
+[0m08:06:58.311073 [info ] [MainThread]: Registered adapter: clickhouse=1.9.2
+[0m08:06:58.348306 [debug] [MainThread]: checksum: f6e4baf4de20596ffb9d14e6ef805989eb0e1950dedc3cc83d03f20aa023904c, vars: {}, profile: , target: , version: 1.10.6
+[0m08:06:58.417096 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m08:06:58.417744 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m08:06:58.437650 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '8972a980-ab21-4131-82ff-0096881e854d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb3ec6f50>]}
+[0m08:06:58.490240 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m08:06:58.491894 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m08:06:58.510945 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '8972a980-ab21-4131-82ff-0096881e854d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb37adb10>]}
+[0m08:06:58.511487 [info ] [MainThread]: Found 9 models, 1 source, 477 macros
+[0m08:06:58.511863 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '8972a980-ab21-4131-82ff-0096881e854d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb3b37550>]}
+[0m08:06:58.512980 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m08:06:58.514238 [debug] [MainThread]: Command end result
+[0m08:06:58.536181 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/airflow/dbt/target/manifest.json
+[0m08:06:58.537959 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/airflow/dbt/target/semantic_manifest.json
+[0m08:06:58.540367 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/airflow/dbt/target/run_results.json
+[0m08:06:58.541197 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 0.39779395, "process_in_blocks": "1224", "process_kernel_time": 0.124142, "process_mem_max_rss": "109808", "process_out_blocks": "2112", "process_user_time": 1.382583}
+[0m08:06:58.541698 [debug] [MainThread]: Command `dbt test` succeeded at 08:06:58.541601 after 0.40 seconds
+[0m08:06:58.542179 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb83b8410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb3ec7090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffffb3aad7d0>]}
+[0m08:06:58.542646 [debug] [MainThread]: Flushing usage events
+[0m08:06:59.735097 [debug] [MainThread]: An error was encountered while trying to flush usage events

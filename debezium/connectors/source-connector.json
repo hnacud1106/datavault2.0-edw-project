@@ -1,7 +1,7 @@
 {
   "name": "clickhouse-source-connector",
   "config": {
-    "connector.class": "io.debezium.connector.jdbc.JdbcSourceConnector",
+    "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
     "connection.url": "jdbc:clickhouse://clickhouse-source:8123/staging",
     "connection.username": "default",
     "connection.password": "source_password_123",

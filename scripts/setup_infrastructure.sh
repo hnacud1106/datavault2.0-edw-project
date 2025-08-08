@@ -39,6 +39,29 @@ check_service() {
     return 1
 }
 
+# Function to check JSON response
+check_json_service() {
+    local service_name=$1
+    local url=$2
+    local max_attempts=20
+    local attempt=1
+
+    print_status "Waiting for $service_name to be ready..."
+
+    while [ $attempt -le $max_attempts ]; do
+        if curl -s "$url" | jq . > /dev/null 2>&1; then
+            print_status "$service_name is ready!"
+            return 0
+        fi
+        printf "   Attempt $attempt/$max_attempts failed, retrying in 15s...\r"
+        sleep 15
+        ((attempt++))
+    done
+
+    print_error "$service_name failed to start after $max_attempts attempts"
+    return 1
+}
+
 # Step 1: Pre-flight checks
 print_status "Running pre-flight checks..."
 
@@ -93,20 +116,55 @@ print_status "Starting core infrastructure..."
 docker-compose up -d zookeeper kafka postgres-airflow redis
 sleep 20
 
-# Step 9: Start ClickHouse instances
+# Step 9: Initialize Kafka topics (if kafka-init service exists)
+print_status "Initializing Kafka infrastructure..."
+docker-compose up -d kafka-init 2>/dev/null || print_status "No kafka-init service found, using auto-creation"
+sleep 10
+
+# Step 10: Start Schema Registry
+print_status "Starting Schema Registry..."
+docker-compose up -d schema-registry
+sleep 15
+
+# Check Schema Registry
+check_json_service "Schema Registry" "http://localhost:8081/"
+
+# Step 11: Start ClickHouse instances
 print_status "Starting ClickHouse instances..."
 docker-compose up -d clickhouse-source clickhouse-edw
 sleep 30
 
-# Step 10: Check ClickHouse readiness
+# Step 12: Check ClickHouse readiness
 check_service "ClickHouse Source" "http://localhost:8123/ping"
 check_service "ClickHouse EDW" "http://localhost:8124/ping"
 
-# Step 11: Initialize Airflow database
+# Step 13: Start Debezium Connect
+print_status "Starting Debezium Kafka Connect..."
+docker-compose up -d debezium
+sleep 30
+
+# Check Debezium Connect
+check_json_service "Debezium Connect" "http://localhost:8083/"
+
+print_status "Registering CDC connector..."
+curl -X POST http://localhost:8083/connectors \
+  -H "Content-Type: application/json" \
+  -d @./debezium/connectors/source-connector.json
+
+
+# Step 14: Start Kafka UI (if exists)
+print_status "Starting Kafka UI..."
+docker-compose up -d kafka-ui 2>/dev/null || print_status "No kafka-ui service found"
+sleep 10
+
+# Check Kafka UI if exists
+curl -s "http://localhost:8090/" > /dev/null 2>&1 && print_status "Kafka UI is ready!" || print_status "Kafka UI not available"
+
+# Step 15: Initialize Airflow database
 print_status "Initializing Airflow database..."
 docker-compose run --rm airflow-webserver airflow db init
 
-# Step 12: Create Airflow admin user
+# Step 16: Create Airflow admin user
 print_status "Creating Airflow admin user..."
 docker-compose run --rm airflow-webserver airflow users create \
     --username admin \
@@ -116,18 +174,18 @@ docker-compose run --rm airflow-webserver airflow users create \
     --email admin@example.com \
     --password admin
 
-# Step 13: Start Airflow services
+# Step 17: Start Airflow services
 print_status "Starting Airflow services..."
 docker-compose up -d airflow-webserver airflow-scheduler airflow-worker
 
-# Step 14: Check Airflow readiness
+# Step 18: Check Airflow readiness
 check_service "Airflow" "http://localhost:8080/health"
 
-# Step 15: Initialize EDW database structure
+# Step 19: Initialize EDW database structure
 print_status "Initializing EDW database structure..."
 sleep 10
 
-# Step 16: Test connections and show status
+# Step 20: Test connections and show status
 print_status "Testing connections..."
 
 SOURCE_COUNT=$(docker exec clickhouse-source clickhouse-client --query="SELECT count(*) FROM staging.products" 2>/dev/null || echo "0")
@@ -135,6 +193,15 @@ EDW_COUNT=$(docker exec clickhouse-edw clickhouse-client --query="SELECT count(*
 
 print_status "ClickHouse Source - Sample records: $SOURCE_COUNT"
 print_status "ClickHouse EDW - Staging records: $EDW_COUNT"
+
+# Verify Kafka Connect plugins
+JDBC_PLUGIN=$(curl -s "http://localhost:8083/connector-plugins" | jq -r '.[] | select(.class | contains("JdbcSourceConnector")) | .class' 2>/dev/null || echo "")
+
+if [ -n "$JDBC_PLUGIN" ]; then
+    print_status "✅ Debezium JDBC Connector found: $JDBC_PLUGIN"
+else
+    print_warning "⚠️  Debezium JDBC Connector not found, CDC may not work"
+fi
 
 # Final status
 echo ""
@@ -147,13 +214,19 @@ echo "   🔑 Password: admin"
 echo ""
 echo "   📊 ClickHouse Source: http://localhost:8123"
 echo "   📊 ClickHouse EDW: http://localhost:8124"
+echo "   🔗 Kafka Connect: http://localhost:8083"
+if curl -s "http://localhost:8090/" > /dev/null 2>&1; then
+echo "   📈 Kafka UI: http://localhost:8090"
+fi
+echo "   🔧 Schema Registry: http://localhost:8081"
 echo ""
 echo -e "${BLUE}📋 Next Steps:${NC}"
 echo "   1. ✅ Infrastructure is ready"
 echo "   2. 🌐 Access Airflow UI and verify DAGs are loaded"
 echo "   3. ▶️  Trigger 'initial_load_pipeline' DAG manually"
-echo "   4. 📈 Monitor execution in Airflow logs"
-echo "   5. 📝 Add new deals to configs/deal_filters.xlsx"
+echo "   4. 🔗 Deploy CDC connector if needed"
+echo "   5. 📈 Monitor execution in Airflow logs"
+echo "   6. 📝 Add new deals to configs/deal_filters.xlsx"
 echo ""
 echo -e "${BLUE}🔍 Quick Health Check:${NC}"
 echo "   Run: ./scripts/monitor.sh"
